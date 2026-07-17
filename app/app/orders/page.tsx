@@ -1,0 +1,68 @@
+import { redirect } from "next/navigation";
+import { getSession } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { formatCurrency, formatDate } from "@/lib/format";
+import { CustomerOrdersClient } from "@/components/customer/CustomerOrdersClient";
+
+export default async function CustomerOrdersPage({ searchParams }: { searchParams: { q?: string; page?: string; tab?: string } }) {
+  const session = await getSession();
+  if (!session?.customerId) redirect("/admin");
+
+  const page = Number(searchParams.page) || 1;
+  const limit = 10;
+  const skip = (page - 1) * limit;
+  const q = searchParams.q || "";
+  const tab = searchParams.tab || "all";
+
+  const where: any = { customerId: session.customerId };
+  if (q) {
+    where.orderExternalId = { contains: q };
+  }
+
+  if (tab === "completed") { where.orderStatus = "approved"; where.payoutStatus = "paid"; }
+  if (tab === "pending") where.orderStatus = "pending";
+  if (tab === "processing") { where.orderStatus = "approved"; where.payoutStatus = { not: "paid" }; }
+  if (tab === "cancelled") where.orderStatus = { in: ["cancelled", "rejected"] };
+
+  const baseWhere = { customerId: session.customerId };
+
+  const [totalCount, completedCount, pendingCount, processingCount, cancelledCount, orders, filteredCount] = await Promise.all([
+    prisma.order.count({ where: baseWhere }),
+    prisma.order.count({ where: { ...baseWhere, orderStatus: "approved", payoutStatus: "paid" } }),
+    prisma.order.count({ where: { ...baseWhere, orderStatus: "pending" } }),
+    prisma.order.count({ where: { ...baseWhere, orderStatus: "approved", payoutStatus: { not: "paid" } } }),
+    prisma.order.count({ where: { ...baseWhere, orderStatus: { in: ["cancelled", "rejected"] } } }),
+    prisma.order.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+      skip,
+      take: limit,
+      include: { platform: true },
+    }),
+    prisma.order.count({ where })
+  ]);
+
+  const formattedOrders = orders.map((o) => ({
+    id: o.id,
+    orderExternalId: o.orderExternalId,
+    platformName: o.platform.name,
+    createdAt: formatDate(o.createdAt),
+    orderAmount: formatCurrency(Number(o.orderAmount ?? 0)),
+    customerRewardAmount: formatCurrency(Number(o.customerRewardAmount)),
+    orderStatus: o.orderStatus,
+    payoutStatus: o.payoutStatus,
+  }));
+
+  const totalPages = Math.ceil(filteredCount / limit);
+  const counts = {
+    all: totalCount,
+    completed: completedCount,
+    pending: pendingCount,
+    processing: processingCount,
+    cancelled: cancelledCount,
+  };
+
+  return (
+    <CustomerOrdersClient orders={formattedOrders} totalPages={totalPages} currentPage={page} counts={counts} />
+  );
+}
