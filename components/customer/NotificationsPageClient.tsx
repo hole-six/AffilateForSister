@@ -58,7 +58,7 @@ export function NotificationsPageClient({
             onClick={() => setTab(t.id)}
             className={`flex h-11 shrink-0 items-center gap-xs whitespace-nowrap rounded-full px-lg text-[14px] font-bold transition-all ${
               tab === t.id
-                ? "bg-[#e86a33] text-white shadow-md shadow-[#e86a33]/25"
+                ? "bg-[#EC407A] text-white shadow-md shadow-[#EC407A]/25"
                 : "bg-white text-gray-500 ring-1 ring-black/[0.08] hover:bg-gray-50 hover:text-gray-900"
             }`}
           >

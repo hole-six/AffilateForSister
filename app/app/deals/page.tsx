@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { Flame } from "lucide-react";
+import { Sparkles, Tag, TrendingDown } from "lucide-react";
 import { DealGrid } from "@/components/customer/DealGrid";
 import { ServerSearchInput } from "@/components/ui/ServerSearchInput";
 
@@ -30,7 +30,7 @@ export default async function CustomerDealsPage({ searchParams }: { searchParams
       orderBy: { createdAt: "desc" },
       skip,
       take: limit,
-    })
+    }),
   ]);
 
   const formattedDeals = deals.map((d) => ({
@@ -49,59 +49,59 @@ export default async function CustomerDealsPage({ searchParams }: { searchParams
   const totalPages = Math.ceil(totalCount / limit);
 
   return (
-    <div className="flex flex-col gap-xl fade-in">
-      {/* Banner Header */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#ff4500] via-[#e86a33] to-[#ff8c42] p-xl sm:p-2xl">
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "20px 20px" }}
+    <div className="flex flex-col gap-xl fade-in pb-2xl">
+      {/* ══ HERO ══ */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#e91e8c] to-primary-active px-xl py-2xl shadow-xl shadow-primary/20">
+        <div className="pointer-events-none absolute -top-12 -right-12 h-48 w-48 rounded-full bg-white/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-8 left-1/4 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
+        <img
+          src="/nhimmagiamgia.png"
+          alt=""
+          aria-hidden="true"
+          className="absolute right-4 bottom-0 h-32 w-32 object-contain opacity-20 pointer-events-none select-none"
         />
-        <svg className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
-          <circle cx="90%" cy="20%" r="120" fill="white" fillOpacity="0.06">
-            <animate attributeName="cx" values="90%;85%;90%" dur="8s" repeatCount="indefinite" />
-          </circle>
-          <circle cx="10%" cy="75%" r="80" fill="white" fillOpacity="0.08">
-            <animate attributeName="cy" values="75%;65%;75%" dur="10s" repeatCount="indefinite" />
-          </circle>
-        </svg>
-
         <div className="relative z-10">
-          <div className="flex items-center gap-sm mb-sm">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/20">
-              <Flame size={16} className="text-white" strokeWidth={2} />
-            </div>
-            <span className="text-[12px] font-bold uppercase tracking-[0.12em] text-white/70">Deals Độc Quyền</span>
-          </div>
-          <h1 className="text-[28px] sm:text-[36px] font-black text-white leading-tight">
-            🔥 Deal Sập Sàn Hôm Nay
+          <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest mb-xs">Ưu đãi</p>
+          <h1 className="font-black text-[28px] md:text-[36px] text-white leading-tight tracking-tight mb-sm">
+            Deal Sập Sàn Hôm Nay 🔥
           </h1>
-          <p className="mt-xs text-[14px] text-white/70 max-w-[400px]">
-            Những deal giảm giá được admin tuyển chọn kỹ — bấm vào mua ngay để nhận hoàn tiền!
+          <p className="text-white/75 text-[14px] max-w-lg leading-relaxed mb-lg">
+            Tổng hợp các deal giảm giá hot nhất, cập nhật liên tục mỗi ngày.
           </p>
-          <div className="mt-lg flex items-center gap-md">
-            <div className="flex items-center gap-xs bg-white/15 rounded-xl px-md py-xs">
-              <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-[13px] font-bold text-white">{activeDealsCount} deals đang có</span>
+          <div className="flex flex-wrap gap-sm">
+            <div className="flex items-center gap-xs bg-white/15 backdrop-blur-sm border border-white/20 text-white text-[12px] font-semibold px-md py-[5px] rounded-full">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 animate-pulse" />
+              {activeDealsCount} deals đang có
+            </div>
+            <div className="flex items-center gap-xs bg-white/15 backdrop-blur-sm border border-white/20 text-white text-[12px] font-semibold px-md py-[5px] rounded-full">
+              <TrendingDown size={12} strokeWidth={2.5} />
+              Giảm sâu đến 80%
+            </div>
+            <div className="flex items-center gap-xs bg-white/15 backdrop-blur-sm border border-white/20 text-white text-[12px] font-semibold px-md py-[5px] rounded-full">
+              <Sparkles size={12} strokeWidth={2.5} />
+              Kết hợp hoàn tiền
             </div>
           </div>
         </div>
-
-        <img
-          src="/heogiamgia.png"
-          alt=""
-          className="pointer-events-none absolute -right-2 bottom-0 z-10 hidden h-[140px] w-[140px] object-contain drop-shadow-xl sm:block"
-        />
       </div>
 
-      <div className="mb-md">
-        <ServerSearchInput placeholder="Tìm kiếm deal giảm giá..." />
+      {/* ══ SEARCH ══ */}
+      <div className="flex items-center gap-md">
+        <div className="flex items-center gap-sm text-[13px] font-bold text-mute/60">
+          <Tag size={14} className="text-primary" />
+          {totalCount} kết quả
+        </div>
+        <div className="flex-1">
+          <ServerSearchInput placeholder="Tìm kiếm deal giảm giá..." />
+        </div>
       </div>
 
+      {/* ══ GRID ══ */}
       {formattedDeals.length === 0 ? (
         <div className="flex flex-col items-center py-3xl text-center">
-          <div className="text-6xl mb-lg">🛒</div>
-          <p className="text-[16px] font-bold text-gray-400">Không tìm thấy deal nào</p>
-          <p className="text-[13px] text-gray-300 mt-xs">Thử tìm kiếm với từ khoá khác xem sao!</p>
+          <img src="/nhimchodoi.png" alt="" className="h-24 w-24 object-contain mb-lg" />
+          <p className="text-[16px] font-bold text-ink">Không tìm thấy deal nào</p>
+          <p className="text-[13px] text-mute mt-xs">Thử tìm kiếm với từ khoá khác xem sao!</p>
         </div>
       ) : (
         <DealGrid deals={formattedDeals} totalPages={totalPages} currentPage={page} />

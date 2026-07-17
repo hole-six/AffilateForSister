@@ -52,7 +52,7 @@ export function BroadcastForm() {
   return (
     <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/5 flex flex-col gap-md">
       <div className="flex items-center gap-sm">
-        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#fff0e6] text-[#e86a33]">
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#fdebf2] text-[#EC407A]">
           <Megaphone size={18} strokeWidth={2} />
         </div>
         <div>
@@ -67,7 +67,7 @@ export function BroadcastForm() {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Tiêu đề thông báo..."
         maxLength={120}
-        className="h-11 w-full rounded-xl bg-gray-50 px-md text-[14px] font-medium text-gray-900 ring-1 ring-gray-100 focus:outline-none focus:ring-2 focus:ring-[#e86a33]/30 transition-all"
+        className="h-11 w-full rounded-xl bg-gray-50 px-md text-[14px] font-medium text-gray-900 ring-1 ring-gray-100 focus:outline-none focus:ring-2 focus:ring-[#EC407A]/30 transition-all"
       />
       <textarea
         value={message}
@@ -75,13 +75,13 @@ export function BroadcastForm() {
         placeholder="Nội dung thông báo..."
         maxLength={500}
         rows={3}
-        className="w-full rounded-xl bg-gray-50 p-md text-[14px] font-medium text-gray-900 ring-1 ring-gray-100 focus:outline-none focus:ring-2 focus:ring-[#e86a33]/30 transition-all resize-none"
+        className="w-full rounded-xl bg-gray-50 p-md text-[14px] font-medium text-gray-900 ring-1 ring-gray-100 focus:outline-none focus:ring-2 focus:ring-[#EC407A]/30 transition-all resize-none"
       />
 
       <button
         onClick={send}
         disabled={loading || !title.trim() || !message.trim()}
-        className="w-fit rounded-xl bg-[#e86a33] px-lg py-[10px] text-[13px] font-bold text-white shadow-md shadow-[#e86a33]/25 transition-all hover:bg-[#d65d2a] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
+        className="w-fit rounded-xl bg-[#EC407A] px-lg py-[10px] text-[13px] font-bold text-white shadow-md shadow-[#EC407A]/25 transition-all hover:bg-[#c2185b] active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed"
       >
         {loading ? "Đang gửi..." : "Gửi cho tất cả khách hàng"}
       </button>

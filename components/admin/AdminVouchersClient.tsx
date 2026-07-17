@@ -75,7 +75,7 @@ export function AdminVouchersClient({ vouchers }: { vouchers: VoucherRow[] }) {
               setSearch(e.target.value);
               setCurrentPage(1);
             }}
-            className="h-11 w-full rounded-2xl bg-white pl-10 pr-md text-[14px] font-medium text-gray-900 shadow-sm ring-1 ring-black/5 focus:border-[#e86a33] focus:outline-none focus:ring-1 focus:ring-[#e86a33] transition-all"
+            className="h-11 w-full rounded-2xl bg-white pl-10 pr-md text-[14px] font-medium text-gray-900 shadow-sm ring-1 ring-black/5 focus:border-[#EC407A] focus:outline-none focus:ring-1 focus:ring-[#EC407A] transition-all"
           />
         </div>
       </div>
@@ -97,9 +97,9 @@ export function AdminVouchersClient({ vouchers }: { vouchers: VoucherRow[] }) {
           {paginated.map((v) => (
             <Card
               key={v.id}
-              className="flex flex-col p-0 overflow-hidden border border-gray-100 hover:border-[#e86a33]/30 hover:shadow-md transition-all group relative"
+              className="flex flex-col p-0 overflow-hidden border border-gray-100 hover:border-[#EC407A]/30 hover:shadow-md transition-all group relative"
             >
-              <div className="p-lg bg-gradient-to-br from-[#fff0e6]/50 to-white border-b border-dashed border-gray-200 relative">
+              <div className="p-lg bg-gradient-to-br from-[#fdebf2]/50 to-white border-b border-dashed border-gray-200 relative">
                 <div className="flex items-start justify-between gap-md">
                   <div className="flex-1">
                     <span className="inline-block rounded-md bg-gray-900 px-2 py-1 text-[10px] font-bold text-white uppercase tracking-wider mb-sm">
@@ -114,7 +114,7 @@ export function AdminVouchersClient({ vouchers }: { vouchers: VoucherRow[] }) {
                       className="h-14 w-14 shrink-0 rounded-xl object-cover ring-1 ring-black/5"
                     />
                   ) : (
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#e86a33]/10 text-[#e86a33]">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EC407A]/10 text-[#EC407A]">
                       <TicketPercent size={20} strokeWidth={2} />
                     </div>
                   )}
@@ -133,14 +133,14 @@ export function AdminVouchersClient({ vouchers }: { vouchers: VoucherRow[] }) {
                   {v.shortUrl && (
                     <div className="flex items-center justify-between rounded-lg bg-gray-50 border border-gray-100 p-sm pl-md">
                       <div className="flex items-center gap-xs min-w-0">
-                        <Link2 size={14} className="text-[#e86a33] shrink-0" />
+                        <Link2 size={14} className="text-[#EC407A] shrink-0" />
                         <span className="truncate font-mono text-[12px] font-semibold text-gray-700">
                           {v.shortUrl}
                         </span>
                       </div>
                       <button
                         onClick={() => copyShortUrl(v.id, v.shortUrl!)}
-                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-white hover:text-[#e86a33] transition-colors"
+                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-gray-400 hover:bg-white hover:text-[#EC407A] transition-colors"
                         title="Copy link"
                       >
                         {copiedId === v.id ? (
@@ -152,12 +152,12 @@ export function AdminVouchersClient({ vouchers }: { vouchers: VoucherRow[] }) {
                     </div>
                   )}
                   {v.voucherCode ? (
-                    <div className="flex items-center justify-between rounded-lg bg-gray-50 border border-gray-100 p-sm pl-md group-hover:bg-[#fff0e6]/30 transition-colors">
+                    <div className="flex items-center justify-between rounded-lg bg-gray-50 border border-gray-100 p-sm pl-md group-hover:bg-[#fdebf2]/30 transition-colors">
                       <span className="font-mono text-[16px] font-bold tracking-wider text-gray-900">
                         {v.voucherCode}
                       </span>
                       <button
-                        className="flex h-8 w-8 items-center justify-center rounded-md text-gray-400 hover:bg-white hover:text-[#e86a33] transition-colors"
+                        className="flex h-8 w-8 items-center justify-center rounded-md text-gray-400 hover:bg-white hover:text-[#EC407A] transition-colors"
                         title="Copy mã"
                       >
                         <Copy size={16} />

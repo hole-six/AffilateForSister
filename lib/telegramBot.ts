@@ -141,7 +141,7 @@ export function buildConvertLinkPromptMessage(): string {
   return [
     "🔄 <b>Đổi link nhanh</b>",
     "",
-    "Dán link Shopee hoặc TikTok bạn muốn đổi vào ngay khung chat này (chỉ cần gửi link, không cần lệnh gì thêm), bot sẽ trả về link hoàn tiền ngay lập tức.",
+    "Dán link Shopee bạn muốn đổi vào ngay khung chat này (chỉ cần gửi link, không cần lệnh gì thêm), bot sẽ trả về link hoàn tiền ngay lập tức.",
   ].join("\n");
 }
 
@@ -149,7 +149,7 @@ export function buildTelegramHelpMessage(): string {
   return [
     "👋 <b>Chào mừng đến với bot Hoàn Tiền!</b>",
     "",
-    "Gửi link Shopee hoặc TikTok, bot sẽ đổi sang link hoàn tiền ngay lập tức.",
+    "Gửi link Shopee, bot sẽ đổi sang link hoàn tiền ngay lập tức.",
     "",
     "<b>Lệnh nhanh:</b>",
     "💰 /wallet — xem số dư hoàn tiền",
@@ -191,7 +191,7 @@ export function buildLinkExpiredMessage(): string {
 
 export function buildUnsupportedPlatformMessage(rawUrl: string): string {
   return [
-    "🙁 Bot đã nhận link nhưng hiện chỉ hỗ trợ <b>Shopee</b> và <b>TikTok Shop</b>.",
+    "🙁 Bot đã nhận link nhưng hiện chỉ hỗ trợ <b>Shopee</b>.",
     `Link vừa gửi: ${escapeHtml(rawUrl)}`,
   ].join("\n");
 }
@@ -320,7 +320,7 @@ export function buildLinksListMessage(
   links: { trackingCode: string; shortUrl: string | null; createdAt: Date }[]
 ): string {
   if (links.length === 0) {
-    return "🔗 Bạn chưa tạo link nào. Gửi link Shopee/TikTok cho bot để bắt đầu đổi link hoàn tiền.";
+    return "🔗 Bạn chưa tạo link nào. Gửi link Shopee cho bot để bắt đầu đổi link hoàn tiền.";
   }
 
   const lines = links.map((l) => `🔗 <a href="${l.shortUrl ?? "#"}">${l.shortUrl ?? l.trackingCode}</a>`);
@@ -348,10 +348,9 @@ export function buildWalletMessage(params: {
   ].join("\n");
 }
 
-export function mapDetectedPlatformToCode(url: string): "SHOPEE" | "TIKTOK" | null {
+export function mapDetectedPlatformToCode(url: string): "SHOPEE" | null {
   const platform = detectPlatform(url);
   if (platform === "shopee") return "SHOPEE";
-  if (platform === "tiktok") return "TIKTOK";
   return null;
 }
 

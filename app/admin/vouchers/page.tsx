@@ -6,7 +6,7 @@ import { AdminVouchersClient } from "@/components/admin/AdminVouchersClient";
 
 export default async function AdminVouchersPage() {
   const [platforms, vouchers] = await Promise.all([
-    prisma.platform.findMany({ orderBy: { name: "asc" } }),
+    prisma.platform.findMany({ where: { status: "active" }, orderBy: { name: "asc" } }),
     prisma.voucher.findMany({
       orderBy: { createdAt: "desc" },
       include: {

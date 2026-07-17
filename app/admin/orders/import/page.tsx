@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { ImportOrdersWizard } from "@/components/admin/ImportOrdersWizard";
 
 export default async function AdminOrdersImportPage() {
-  const platforms = await prisma.platform.findMany({ orderBy: { name: "asc" } });
+  const platforms = await prisma.platform.findMany({ where: { status: "active" }, orderBy: { name: "asc" } });
 
   return (
     <div className="flex flex-col gap-2xl">

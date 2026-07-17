@@ -4,21 +4,21 @@
 
 @layer base {
   :root {
-    /* ── Primary coral / peach palette ── */
-    --primary: 255 107 53;           /* #FF6B35 - coral chính */
-    --primary-active: 232 90 37;     /* #E85A25 - coral đậm hơn */
-    --primary-neutral: 255 240 230;  /* #FFF0E6 - peach nhạt */
-    --primary-pale: 255 228 214;     /* #FFE4D6 - peach nhẹ */
+    /* ── Primary pastel pink palette ── */
+    --primary: 236 64 122;           /* #EC407A - hồng chính */
+    --primary-active: 194 24 91;     /* #C2185B - hồng đậm hơn (hover/active) */
+    --primary-neutral: 253 235 242;  /* #FDEBF2 - hồng phấn nhạt */
+    --primary-pale: 252 218 231;     /* #FCDAE7 - hồng phấn nhẹ */
 
     /* ── Canvas ── */
     --canvas: 255 255 255;           /* #FFFFFF */
-    --canvas-soft: 255 250 247;      /* #FFFAF7 - cream ấm */
+    --canvas-soft: 255 246 249;      /* #FFF6F9 - trắng ánh hồng */
 
     /* ── Text ── */
-    --ink: 30 20 15;                 /* #1E140F - nâu đậm ấm */
-    --ink-deep: 20 12 8;
-    --body: 80 60 50;                /* #503C32 */
-    --mute: 150 120 105;             /* #967869 */
+    --ink: 45 20 32;                 /* #2D1420 - nâu hồng đậm */
+    --ink-deep: 30 12 20;
+    --body: 92 55 71;                /* #5C3747 */
+    --mute: 168 122 141;             /* #A87A8D */
 
     /* ── Semantic ── */
     --positive: 34 197 94;
@@ -77,21 +77,21 @@
 
   /* ── Gradients ── */
   .gradient-primary {
-    background: linear-gradient(135deg, #FF6B35 0%, #FF8C5A 100%);
+    background: linear-gradient(135deg, #EC407A 0%, #F48FB1 100%);
   }
   .gradient-hero {
-    background: linear-gradient(160deg, #FFF0E8 0%, #FFFAF7 60%, #ffffff 100%);
+    background: linear-gradient(160deg, #FDEBF2 0%, #FFF6F9 60%, #ffffff 100%);
   }
   .gradient-peach {
-    background: linear-gradient(135deg, #FFF0E8 0%, #FFE4D6 100%);
+    background: linear-gradient(135deg, #FDEBF2 0%, #FCDAE7 100%);
   }
 
   /* ── Cute card shadow ── */
   .shadow-cute {
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.08), 0 2px 8px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 20px rgba(236, 64, 122, 0.08), 0 2px 8px rgba(0,0,0,0.04);
   }
   .shadow-cute-lg {
-    box-shadow: 0 8px 40px rgba(255, 107, 53, 0.12), 0 4px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 40px rgba(236, 64, 122, 0.12), 0 4px 16px rgba(0,0,0,0.06);
   }
 
   /* ── Animations ── */
@@ -137,7 +137,7 @@
 
   /* ── Shimmer skeleton ── */
   .shimmer {
-    background: linear-gradient(90deg, #FFE4D6 25%, #FFF0E8 50%, #FFE4D6 75%);
+    background: linear-gradient(90deg, #FCDAE7 25%, #FDEBF2 50%, #FCDAE7 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
@@ -162,7 +162,7 @@
     .responsive-table tbody tr {
       margin: 0 0 12px; padding: 4px 16px;
       border: 1.5px solid rgb(var(--primary-pale));
-      border-radius: 20px;
+      border-radius: 12px;
       background: white;
     }
     .responsive-table tbody tr:last-child { margin-bottom: 0; }

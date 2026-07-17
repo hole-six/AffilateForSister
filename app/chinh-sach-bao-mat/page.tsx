@@ -3,18 +3,18 @@ import { MarketingHeader } from "@/components/marketing/MarketingHeader";
 import { MarketingFooter } from "@/components/marketing/MarketingFooter";
 
 export const metadata: Metadata = {
-  title: "Chính Sách Bảo Mật — iviback",
+  title: "Chính Sách Bảo Mật — Nhím",
   description:
-    "Chính sách bảo mật thông tin cá nhân của người dùng iviback: dữ liệu thu thập, mục đích sử dụng, cookie, chia sẻ bên thứ ba và quyền của bạn.",
+    "Chính sách bảo mật thông tin cá nhân của người dùng Nhím: dữ liệu thu thập, mục đích sử dụng, cookie, chia sẻ bên thứ ba và quyền của bạn.",
   alternates: { canonical: "/chinh-sach-bao-mat" },
   openGraph: {
-    title: "Chính Sách Bảo Mật — iviback",
+    title: "Chính Sách Bảo Mật — Nhím",
     description:
-      "Chính sách bảo mật thông tin cá nhân của người dùng iviback: dữ liệu thu thập, mục đích sử dụng, cookie, chia sẻ bên thứ ba và quyền của bạn.",
+      "Chính sách bảo mật thông tin cá nhân của người dùng Nhím: dữ liệu thu thập, mục đích sử dụng, cookie, chia sẻ bên thứ ba và quyền của bạn.",
     type: "website",
     locale: "vi_VN",
     url: "/chinh-sach-bao-mat",
-    siteName: "iviback",
+    siteName: "Nhím",
   },
 };
 
@@ -22,8 +22,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://iviback.vn/" },
-    { "@type": "ListItem", position: 2, name: "Chính sách bảo mật", item: "https://iviback.vn/chinh-sach-bao-mat" },
+    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://nhimhoahong.site/" },
+    { "@type": "ListItem", position: 2, name: "Chính sách bảo mật", item: "https://nhimhoahong.site/chinh-sach-bao-mat" },
   ],
 };
 
@@ -31,7 +31,7 @@ const SECTIONS = [
   {
     title: "1. Phạm vi áp dụng",
     body: [
-      "Chính sách bảo mật này áp dụng cho toàn bộ thông tin cá nhân mà iviback thu thập khi bạn sử dụng website iviback.vn và bot Telegram chính thức của iviback. Bằng việc sử dụng dịch vụ, bạn đồng ý với cách thức thu thập và xử lý dữ liệu được mô tả dưới đây.",
+      "Chính sách bảo mật này áp dụng cho toàn bộ thông tin cá nhân mà Nhím thu thập khi bạn sử dụng website nhimhoahong.site và bot Telegram chính thức của Nhím. Bằng việc sử dụng dịch vụ, bạn đồng ý với cách thức thu thập và xử lý dữ liệu được mô tả dưới đây.",
     ],
   },
   {
@@ -59,29 +59,29 @@ const SECTIONS = [
   {
     title: "4. Cookie và công nghệ theo dõi",
     body: [
-      "iviback sử dụng cookie thiết yếu để duy trì phiên đăng nhập của bạn một cách an toàn (mã hoá, chỉ truyền qua kết nối HTTPS). Chúng tôi không sử dụng cookie quảng cáo của bên thứ ba.",
-      "Khi bạn truy cập hệ thống từ một link mời (dạng iviback.vn/register?ref=...), một cookie ref_code được lưu trong 30 ngày để ghi nhận đúng người đã giới thiệu bạn nếu bạn đăng ký tài khoản trong khoảng thời gian đó.",
+      "Nhím sử dụng cookie thiết yếu để duy trì phiên đăng nhập của bạn một cách an toàn (mã hoá, chỉ truyền qua kết nối HTTPS). Chúng tôi không sử dụng cookie quảng cáo của bên thứ ba.",
+      "Khi bạn truy cập hệ thống từ một link mời (dạng nhimhoahong.site/register?ref=...), một cookie ref_code được lưu trong 30 ngày để ghi nhận đúng người đã giới thiệu bạn nếu bạn đăng ký tài khoản trong khoảng thời gian đó.",
     ],
   },
   {
     title: "5. Chia sẻ thông tin với bên thứ ba",
     body: [
-      "iviback không bán, cho thuê hoặc trao đổi thông tin cá nhân của bạn cho bất kỳ bên thứ ba nào vì mục đích thương mại. Thông tin chỉ được chia sẻ trong các trường hợp sau:",
+      "Nhím không bán, cho thuê hoặc trao đổi thông tin cá nhân của bạn cho bất kỳ bên thứ ba nào vì mục đích thương mại. Thông tin chỉ được chia sẻ trong các trường hợp sau:",
     ],
     list: [
       "Với ngân hàng bạn khai báo: chỉ số tài khoản/tên chủ tài khoản cần thiết để thực hiện chuyển khoản tiền hoàn.",
       "Với Google: khi bạn chọn đăng nhập bằng Google, việc xác thực diễn ra trực tiếp giữa bạn và Google theo chính sách bảo mật của Google.",
       "Với Telegram: khi bạn liên kết bot, việc gửi/nhận tin nhắn diễn ra qua hạ tầng của Telegram theo chính sách bảo mật của Telegram.",
       "Khi có yêu cầu hợp pháp từ cơ quan nhà nước có thẩm quyền theo quy định của pháp luật Việt Nam.",
-      "Chúng tôi không chủ động gửi thông tin cá nhân của bạn cho Shopee, TikTok Shop hay các sàn liên kết khác — các sàn này chỉ ghi nhận lượt click/đơn hàng qua link theo dõi ẩn danh, không gắn với thông tin định danh cá nhân của bạn.",
+      "Chúng tôi không chủ động gửi thông tin cá nhân của bạn cho Shopee hay các sàn liên kết khác — các sàn này chỉ ghi nhận lượt click/đơn hàng qua link theo dõi ẩn danh, không gắn với thông tin định danh cá nhân của bạn.",
     ],
   },
   {
     title: "6. Bảo mật thông tin",
     list: [
-      "Mật khẩu tài khoản được mã hoá một chiều (hashing), iviback và nhân viên vận hành không có khả năng xem được mật khẩu gốc của bạn.",
+      "Mật khẩu tài khoản được mã hoá một chiều (hashing), Nhím và nhân viên vận hành không có khả năng xem được mật khẩu gốc của bạn.",
       "Toàn bộ kết nối giữa trình duyệt/Telegram và hệ thống đều được mã hoá qua giao thức HTTPS.",
-      "Quyền truy cập vào dữ liệu khách hàng trong hệ thống quản trị được giới hạn cho đội ngũ vận hành iviback, phục vụ đúng mục đích nghiệp vụ.",
+      "Quyền truy cập vào dữ liệu khách hàng trong hệ thống quản trị được giới hạn cho đội ngũ vận hành Nhím, phục vụ đúng mục đích nghiệp vụ.",
     ],
   },
   {
@@ -101,7 +101,7 @@ const SECTIONS = [
   {
     title: "9. Đối tượng sử dụng dịch vụ",
     body: [
-      "Dịch vụ của iviback dành cho người dùng từ đủ 18 tuổi trở lên. Chúng tôi không chủ đích thu thập thông tin cá nhân của trẻ em dưới 18 tuổi.",
+      "Dịch vụ của Nhím dành cho người dùng từ đủ 18 tuổi trở lên. Chúng tôi không chủ đích thu thập thông tin cá nhân của trẻ em dưới 18 tuổi.",
     ],
   },
   {
@@ -113,7 +113,7 @@ const SECTIONS = [
   {
     title: "11. Liên hệ",
     body: [
-      "Nếu bạn có bất kỳ câu hỏi nào về cách iviback thu thập, sử dụng hoặc bảo vệ thông tin cá nhân, vui lòng liên hệ qua hotline 0965.965.439 hoặc các kênh mạng xã hội chính thức tại chân trang website.",
+      "Nếu bạn có bất kỳ câu hỏi nào về cách Nhím thu thập, sử dụng hoặc bảo vệ thông tin cá nhân, vui lòng liên hệ qua hotline 0898204657 hoặc các kênh mạng xã hội chính thức tại chân trang website.",
     ],
   },
 ];
@@ -124,14 +124,14 @@ export default function PrivacyPolicyPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <MarketingHeader activePath="/chinh-sach-bao-mat" />
 
-      <main className="pt-[80px]">
-        <section className="bg-gradient-to-b from-[#fff0e6] to-white py-3xl relative overflow-hidden">
+      <main className="pt-16 md:pt-[100px]">
+        <section className="bg-gradient-to-b from-[#fdebf2] to-white py-3xl relative overflow-hidden">
           <div className="max-w-[800px] mx-auto px-lg relative z-10 text-center">
             <h1 className="text-[36px] md:text-[48px] font-black text-ink tracking-tight mb-md">
               Chính Sách <span className="text-primary">Bảo Mật</span>
             </h1>
             <p className="text-[16px] text-mute max-w-xl mx-auto leading-relaxed">
-              Cập nhật lần cuối: tháng 7/2026. iviback cam kết bảo vệ thông tin cá nhân của bạn.
+              Cập nhật lần cuối: tháng 7/2026. Nhím cam kết bảo vệ thông tin cá nhân của bạn.
             </p>
           </div>
         </section>

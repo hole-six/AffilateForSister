@@ -2,66 +2,27 @@
 
 import { useState } from "react";
 import { Phone, Copy, Check } from "lucide-react";
-import {
-  FacebookIcon,
-  ZaloIcon,
-  YoutubeIcon,
-  TiktokIcon,
-  InstagramIcon,
-  ThreadsIcon,
-} from "@/components/icons/PlatformIcons";
+import { FacebookIcon, ZaloIcon } from "@/components/icons/PlatformIcons";
 
-const PHONE_DISPLAY = "0965.965.439";
+const PHONE_DISPLAY = "0898204657";
 const PHONE_RAW = "0965965439";
 
 const CHANNELS = [
   {
     key: "facebook",
     label: "Facebook",
-    handle: "Fanpage Hoàn Tiền Ví Heo",
+    handle: "Fanpage Hoàn Tiền Ví Nhím",
     cta: "Nhắn tin ngay",
-    href: "https://www.facebook.com/share/1BShYKizDV/?mibextid=wwXIfr",
+    href: "https://www.facebook.com/layeu.chicothe.169",
     Icon: FacebookIcon,
   },
   {
     key: "zalo",
     label: "Zalo",
-    handle: "Cộng đồng Zalo iviback",
-    cta: "Tham gia ngay",
-    href: "https://zalo.me/g/cgmmvw504",
+    handle: "Zalo Nhím: 0898204657",
+    cta: "Nhắn Zalo ngay",
+    href: "https://zalo.me/0898204657",
     Icon: ZaloIcon,
-  },
-  {
-    key: "youtube",
-    label: "Youtube",
-    handle: "@hoanphihoahongaff",
-    cta: "Xem kênh ngay",
-    href: "https://youtube.com/@hoanphihoahongaff?si=aNywoErGCAi7BGxV",
-    Icon: YoutubeIcon,
-  },
-  {
-    key: "tiktok",
-    label: "Tiktok",
-    handle: "@vi_ha790",
-    cta: "Theo dõi ngay",
-    href: "https://www.tiktok.com/@vi_ha790?_r=1&_t=ZS-983XgTM1aum",
-    Icon: TiktokIcon,
-  },
-  {
-    key: "instagram",
-    label: "Instagram",
-    handle: "@imviihaaa",
-    cta: "Theo dõi ngay",
-    href: "https://www.instagram.com/imviihaaa?igsh=M2RqZml1NHpzbmgx&utm_source=qr",
-    Icon: InstagramIcon,
-  },
-  {
-    key: "threads",
-    label: "Threads",
-    handle: "@imviihaaa",
-    cta: "Theo dõi ngay",
-    href: "https://www.threads.com/@imviihaaa?igshid=NTc4MTIwNjQ2YQ==",
-    Icon: ThreadsIcon,
   },
 ];
 
@@ -89,14 +50,14 @@ export function SupportInfoGrid() {
       {/* Hotline nổi bật */}
       <div
         className="flex flex-col gap-md rounded-3xl p-lg shadow-sm ring-1 ring-black/5"
-        style={{ background: "linear-gradient(135deg,#fff3ee,#fde8d8)" }}
+        style={{ background: "linear-gradient(135deg,#fdeef4,#fdebf2)" }}
       >
         <div className="flex items-center gap-md">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 shadow-md shadow-emerald-500/30">
             <Phone size={24} className="text-white" strokeWidth={2.5} />
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-[11px] font-bold uppercase tracking-wide text-[#e86a33]/70">Hotline hỗ trợ</div>
+            <div className="text-[11px] font-bold uppercase tracking-wide text-[#EC407A]/70">Hotline hỗ trợ</div>
             <div className="text-[20px] font-black text-gray-900 tracking-tight">{PHONE_DISPLAY}</div>
           </div>
         </div>
@@ -113,7 +74,7 @@ export function SupportInfoGrid() {
       </div>
 
       {/* Grid các kênh mạng xã hội */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-lg">
         {CHANNELS.map((c) => (
           <a
             key={c.key}
@@ -129,7 +90,7 @@ export function SupportInfoGrid() {
               <div className="font-bold text-gray-900">{c.label}</div>
               <div className="truncate text-[12px] text-gray-400">{c.handle}</div>
             </div>
-            <div className="shrink-0 text-[12px] font-bold text-[#e86a33] opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="shrink-0 text-[12px] font-bold text-[#EC407A] opacity-0 transition-opacity group-hover:opacity-100">
               {c.cta} →
             </div>
           </a>

@@ -108,7 +108,7 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
       {/* INFO BOX theo từng tab — giải thích rõ ý nghĩa để đỡ nhầm giữa "tiền Shopee trả mình" và "mình trả khách" */}
       {currentTab === "completed" && (
         <div className="flex items-start gap-sm bg-blue-50 border border-blue-200 rounded-2xl px-lg py-md">
-          <img src="/heothongbao.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
+          <img src="/nhimthongbao.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
           <p className="text-[13px] text-blue-700 font-medium leading-relaxed">
             Đây là đơn được import <strong>trước khi hệ thống sửa lại logic đọc CSV</strong> nên còn kẹt ở trạng thái cũ, không phản ánh đúng thực tế.
             <strong> Import lại đúng file CSV đã dùng cho các đơn này</strong> — hệ thống sẽ tự phân loại lại chính xác thành "💰 Tiền đã về" hoặc "Đã huỷ" theo đúng trạng thái sản phẩm liên kết thật.
@@ -117,7 +117,7 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
       )}
       {currentTab === "money_in" && (
         <div className="flex items-start gap-sm bg-emerald-50 border border-emerald-200 rounded-2xl px-lg py-md">
-          <img src="/heovitien.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
+          <img src="/nhimgiohang.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
           <p className="text-[13px] text-emerald-700 font-medium leading-relaxed">
             Toàn bộ đơn ở đây <strong>Shopee đã duyệt và trả hoa hồng thật cho bạn</strong> — không phân biệt đã trả tiền cho khách hay chưa.
             Muốn xem riêng phần <strong>chưa trả khách</strong> hay <strong>đã trả khách</strong>, bấm 2 tab kế bên.
@@ -126,7 +126,7 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
       )}
       {currentTab === "unpaid" && (
         <div className="flex items-start gap-sm bg-amber-50 border border-amber-200 rounded-2xl px-lg py-md">
-          <img src="/heochodoi.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
+          <img src="/nhimchodoi.png" alt="" className="h-[26px] w-[26px] object-contain shrink-0 -mt-[2px]" />
           <p className="text-[13px] text-amber-700 font-medium leading-relaxed">
             Tiền Shopee đã về (approved) nhưng <strong>bạn chưa chuyển cho khách</strong>. Vào trang <strong>Thanh toán</strong> để tạo phiếu chi cho khách.
           </p>
@@ -151,8 +151,8 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
             </span>
           </div>
           <div className="flex flex-col">
-            <span className="text-[12px] font-bold text-[#e86a33] uppercase tracking-wider mb-1">Tổng hoàn khách (đang lọc)</span>
-            <span className="text-[20px] font-bold text-[#e86a33] leading-none">
+            <span className="text-[12px] font-bold text-[#EC407A] uppercase tracking-wider mb-1">Tổng hoàn khách (đang lọc)</span>
+            <span className="text-[20px] font-bold text-[#EC407A] leading-none">
               {formatCurrency(sums.customerRewardAmount)}
             </span>
           </div>
@@ -172,7 +172,7 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
                 <th className="px-md py-sm font-bold uppercase tracking-wider text-gray-500 text-[11px]">Khách hàng</th>
                 <th className="px-md py-sm font-bold uppercase tracking-wider text-gray-500 text-[11px]">Ngày ĐH / HT</th>
                 <th className="px-md py-sm font-bold uppercase tracking-wider text-gray-500 text-[11px] text-right">Giá trị đơn</th>
-                <th className="px-md py-sm font-bold uppercase tracking-wider text-[#e86a33] text-[11px] text-right">Tiền hoàn / Giữ lại</th>
+                <th className="px-md py-sm font-bold uppercase tracking-wider text-[#EC407A] text-[11px] text-right">Tiền hoàn / Giữ lại</th>
                 <th className="px-md py-sm font-bold uppercase tracking-wider text-gray-500 text-[11px]">Trạng thái</th>
                 <th className="px-md py-sm font-bold uppercase tracking-wider text-gray-500 text-[11px] w-[220px]">Thao tác</th>
               </tr>
@@ -182,20 +182,20 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
                 <tr>
                   <td colSpan={7} className="py-2xl text-center">
                     <div className="flex flex-col items-center gap-sm">
-                      <img src="/heochodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
+                      <img src="/nhimchodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
                       <span className="text-[14px] font-bold text-gray-400">Không tìm thấy đơn hàng nào phù hợp</span>
                     </div>
                   </td>
                 </tr>
               ) : (
                 orders.map((o) => (
-                  <tr key={o.id} className={`border-b border-gray-50 transition-colors ${o.orderStatus === "clawback" ? "bg-red-50/40" : o.clawbackWarning ? "bg-amber-50/40" : "hover:bg-[#fff0e6]/20"}`}>
+                  <tr key={o.id} className={`border-b border-gray-50 transition-colors ${o.orderStatus === "clawback" ? "bg-red-50/40" : o.clawbackWarning ? "bg-amber-50/40" : "hover:bg-[#fdebf2]/20"}`}>
                     {/* Order Info */}
                     <td className="px-md py-sm" data-label="Đơn hàng / Tracking">
                       <div className="font-mono font-bold text-gray-900 flex items-center gap-1">
                         {o.clawbackWarning && (
                           <span title="Quá 15 ngày — kiểm tra Shopee đã thanh toán chưa">
-                            <img src="/heothongbao.png" alt="" className="h-4 w-4 object-contain shrink-0" />
+                            <img src="/nhimthongbao.png" alt="" className="h-4 w-4 object-contain shrink-0" />
                           </span>
                         )}
                         {o.orderExternalId}
@@ -232,7 +232,7 @@ export function AdminOrdersClient({ orders, customers, totalPages, currentPage, 
 
                     {/* Commissions */}
                     <td className="px-md py-sm text-right" data-label="Tiền hoàn / Giữ lại">
-                      <div className={`font-bold text-[14px] ${o.customerRewardAmount < 0 ? "text-red-600" : "text-[#e86a33]"}`}>
+                      <div className={`font-bold text-[14px] ${o.customerRewardAmount < 0 ? "text-red-600" : "text-[#EC407A]"}`}>
                         {formatCurrency(o.customerRewardAmount)}
                       </div>
                       <div className="text-[11px] font-medium text-gray-400 mt-[2px]">

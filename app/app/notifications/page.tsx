@@ -27,6 +27,7 @@ export default async function NotificationsPage() {
   return (
     <div className="flex flex-col gap-2xl">
       <PageHeader
+        icon="/nhimthongbao.png"
         title="Thông báo & Cộng đồng"
         subtitle="Theo dõi hoạt động tài khoản, trò chuyện cùng cộng đồng và liên hệ hỗ trợ."
       />

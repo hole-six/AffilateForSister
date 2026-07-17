@@ -180,306 +180,218 @@ export function CustomerWalletClient({
     setShowBankOptions(false);
   };
 
-  const renderAccountInfoBox = () => {
-    if (paymentInfo.bankName && paymentInfo.bankAccountNumber) {
-      return (
-        <div className="rounded-lg bg-white p-sm shadow-sm ring-1 ring-black/5">
-          <div className="text-[13px] font-bold text-gray-900">{paymentInfo.bankName}</div>
-          <div className="text-[12px] font-medium text-gray-500 uppercase">
-            {paymentInfo.bankAccountNumber} - {paymentInfo.bankAccountName}
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <div className="flex items-center gap-md rounded-lg bg-white p-sm shadow-sm ring-1 ring-black/5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-gray-400">
-          <AlertCircle size={16} strokeWidth={2.5} />
-        </div>
-        <div>
-          <div className="text-[13px] font-bold text-gray-900">Chưa có thông tin</div>
-          <div className="text-[11px] font-medium text-gray-400">Vui lòng cập nhật</div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <>
       <div className="mx-auto flex max-w-5xl flex-col gap-xl fade-in pb-2xl">
-        {/* HEADER */}
-        <div className="flex items-center gap-md">
-          <img src="/heovitien.png" alt="" className="h-14 w-14 object-contain" />
-          <div>
-            <h1 className="text-[24px] sm:text-[28px] font-black tracking-tight text-gray-900">
-              Thanh Toán
-            </h1>
-            <p className="mt-1 text-[14px] font-medium text-gray-500">
-              Quản lý số dư, yêu cầu thanh toán và xem lịch sử
-            </p>
+        {/* ══ HERO ══ */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 px-xl py-2xl shadow-xl shadow-emerald-400/20">
+          <div className="pointer-events-none absolute -top-10 -right-10 h-44 w-44 rounded-full bg-white/10 blur-3xl" />
+          <img src="/nhimgiohang.png" alt="" aria-hidden="true" className="absolute right-4 bottom-0 h-28 w-28 object-contain opacity-20 pointer-events-none select-none" />
+          <div className="relative z-10">
+            <p className="text-white/60 text-[11px] font-bold uppercase tracking-widest mb-xs">Ví tiền</p>
+            <h1 className="font-black text-[28px] md:text-[34px] text-white leading-tight tracking-tight mb-sm">Quản lý thanh toán</h1>
+            <p className="text-white/75 text-[14px] leading-relaxed max-w-lg">Theo dõi số dư, yêu cầu rút tiền và xem lịch sử giao dịch.</p>
           </div>
         </div>
 
-        {/* STAT CARDS */}
+        {/* ══ STAT CARDS ══ */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-md">
-          {/* Available (Orange Card) */}
-          <div className="relative overflow-hidden rounded-2xl bg-[#e86a33] p-xl shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-            <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white opacity-10" />
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary to-primary-active p-xl shadow-lg shadow-primary/20 hover:-translate-y-0.5 transition-all">
+            <div className="pointer-events-none absolute -right-4 -top-4 h-24 w-24 rounded-full bg-white/15 blur-xl" />
             <div className="relative z-10">
-              <div className="flex items-center gap-sm text-white/90">
-                <Wallet size={16} strokeWidth={2.5} />
-                <span className="text-[13px] font-bold">Khả dụng</span>
+              <div className="flex items-center gap-sm text-white/80 mb-md">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-white/20">
+                  <Wallet size={15} strokeWidth={2} className="text-white" />
+                </div>
+                <span className="text-[12px] font-bold uppercase tracking-wider">Khả dụng</span>
               </div>
-              <div className="mt-md text-[32px] font-black text-white tabular-nums tracking-tight">
-                {formatCurrency(stats.available)}
-              </div>
+              <div className="text-[32px] font-black text-white tabular-nums tracking-tight leading-none">{formatCurrency(stats.available)}</div>
+              <p className="text-white/60 text-[11px] mt-xs font-medium">Sẵn sàng rút</p>
             </div>
           </div>
-
-          {/* Pending (White Card) */}
-          <div className="rounded-2xl bg-white p-xl shadow-sm ring-1 ring-black/5 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-            <div className="flex items-center gap-sm text-[#f59e0b]">
-              <Clock size={16} strokeWidth={2.5} />
-              <span className="text-[13px] font-bold">Chờ duyệt</span>
+          <div className="rounded-2xl bg-white p-xl shadow-sm ring-1 ring-black/[0.05] hover:-translate-y-0.5 transition-all">
+            <div className="flex items-center gap-sm mb-md">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-100"><Clock size={15} strokeWidth={2} className="text-amber-500" /></div>
+              <span className="text-[12px] font-bold uppercase tracking-wider text-amber-600">Chờ duyệt</span>
             </div>
-            <div className="mt-md text-[24px] font-black text-gray-900 tabular-nums tracking-tight">
-              {formatCurrency(stats.pending)}
-            </div>
-            <div className="mt-xs text-[11px] font-medium text-gray-400">Đang chờ admin duyệt</div>
+            <div className="text-[26px] font-black text-amber-600 tabular-nums tracking-tight leading-none">{formatCurrency(stats.pending)}</div>
+            <p className="text-mute text-[11px] mt-xs font-medium">Đang xử lý</p>
           </div>
-
-          {/* Paid (White Card) */}
-          <div className="rounded-2xl bg-white p-xl shadow-sm ring-1 ring-black/5 hover:shadow-md hover:-translate-y-1 transition-all duration-200">
-            <div className="flex items-center gap-sm text-[#2bc48a]">
-              <CheckCircle2 size={16} strokeWidth={2.5} />
-              <span className="text-[13px] font-bold">Đã nhận</span>
+          <div className="rounded-2xl bg-white p-xl shadow-sm ring-1 ring-black/[0.05] hover:-translate-y-0.5 transition-all">
+            <div className="flex items-center gap-sm mb-md">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-100"><CheckCircle2 size={15} strokeWidth={2} className="text-emerald-500" /></div>
+              <span className="text-[12px] font-bold uppercase tracking-wider text-emerald-600">Đã nhận</span>
             </div>
-            <div className="mt-md text-[24px] font-black text-gray-900 tabular-nums tracking-tight">
-              {formatCurrency(stats.paid)}
-            </div>
-            <div className="mt-xs text-[11px] font-medium text-gray-400">Tổng đã thanh toán thành công</div>
+            <div className="text-[26px] font-black text-emerald-600 tabular-nums tracking-tight leading-none">{formatCurrency(stats.paid)}</div>
+            <p className="text-mute text-[11px] mt-xs font-medium">Tổng đã thanh toán</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-xl lg:grid-cols-[1fr_2fr] items-start">
-          {/* LEFT COLUMN: PAYMENT REQUEST */}
-          <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/5">
-            <h2 className="text-[16px] font-bold text-gray-900 mb-xl">Yêu cầu rút tiền</h2>
-
-            <div className="flex flex-col gap-lg">
-              {/* Available Balance */}
+          {/* ══ WITHDRAW ══ */}
+          <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/[0.05]">
+            <div className="flex items-center gap-sm mb-xl">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-pink-400 shadow-sm">
+                <Wallet size={16} strokeWidth={2} className="text-white" />
+              </div>
               <div>
-                <label className="mb-sm block text-[13px] font-bold text-gray-600">Số dư khả dụng</label>
-                <div className="flex h-12 w-full items-center rounded-xl bg-gray-50 px-md text-[15px] font-black text-gray-900 ring-1 ring-gray-100">
-                  {formatCurrency(stats.available)}
-                </div>
+                <h2 className="font-black text-[15px] text-ink">Yêu cầu rút tiền</h2>
+                <p className="text-[11px] text-mute">Tối thiểu {formatCurrency(MIN_WITHDRAW_AMOUNT)}</p>
+              </div>
+            </div>
+            <div className="flex flex-col gap-lg">
+              <div className="rounded-2xl bg-gradient-to-br from-primary/5 to-pink-50 border border-primary/10 px-lg py-md">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-primary/60 mb-xs">Số dư khả dụng</p>
+                <p className="text-[28px] font-black text-primary tabular-nums leading-none">{formatCurrency(stats.available)}</p>
                 {stats.available < MIN_WITHDRAW_AMOUNT && (
-                  <p className="mt-xs text-[11px] font-medium text-gray-400">
-                    Cần tối thiểu {formatCurrency(MIN_WITHDRAW_AMOUNT)} mới gửi được yêu cầu rút tiền
-                  </p>
+                  <p className="mt-xs text-[11px] font-medium text-mute">Cần thêm {formatCurrency(MIN_WITHDRAW_AMOUNT - stats.available)} nữa để rút</p>
                 )}
               </div>
-
-              {/* Account Info */}
-              <div className="rounded-xl bg-gray-50 p-md ring-1 ring-gray-100">
-                <div className="mb-sm flex items-center justify-between">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
-                    Thông tin tài khoản nhận
-                  </span>
-                  <button
-                    type="button"
-                    onClick={openModal}
-                    className="flex items-center gap-[4px] text-[12px] font-bold text-[#e86a33] hover:text-[#d65d2a]"
-                  >
-                    <Edit2 size={12} strokeWidth={2.5} />
-                    Chỉnh sửa
+              <div className="rounded-2xl bg-gray-50 border border-gray-100 p-md">
+                <div className="flex items-center justify-between mb-sm">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-mute/60">Tài khoản nhận</span>
+                  <button type="button" onClick={openModal} className="flex items-center gap-xs text-[12px] font-bold text-primary hover:text-primary-active transition-colors">
+                    <Edit2 size={11} strokeWidth={2.5} /> Chỉnh sửa
                   </button>
                 </div>
-
-                {renderAccountInfoBox()}
+                {paymentInfo.bankName && paymentInfo.bankAccountNumber ? (
+                  <div className="rounded-xl bg-white border border-gray-100 p-sm shadow-sm">
+                    <div className="text-[13px] font-bold text-ink leading-tight">{paymentInfo.bankName}</div>
+                    <div className="text-[11px] text-mute font-medium mt-[2px] uppercase">{paymentInfo.bankAccountNumber} · {paymentInfo.bankAccountName}</div>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-sm rounded-xl bg-amber-50 border border-amber-100 px-md py-sm">
+                    <AlertCircle size={14} strokeWidth={2} className="text-amber-500 shrink-0" />
+                    <div>
+                      <div className="text-[12px] font-bold text-amber-700">Chưa có thông tin ngân hàng</div>
+                      <div className="text-[11px] text-amber-600">Thêm để có thể rút tiền</div>
+                    </div>
+                  </div>
+                )}
               </div>
-
-              {error && <p className="text-[12px] font-bold text-red-500">{error}</p>}
-
+              {error && <p className="text-[12px] font-bold text-red-600 rounded-xl bg-red-50 px-md py-sm">{error}</p>}
               {pendingRequest ? (
-                <div className="flex items-start gap-sm rounded-xl bg-amber-50 p-md ring-1 ring-amber-100">
-                  <BellRing size={18} className="mt-[2px] shrink-0 text-amber-500" strokeWidth={2.25} />
+                <div className="flex items-start gap-sm rounded-2xl bg-amber-50 border border-amber-100 p-md">
+                  <BellRing size={16} className="mt-[2px] shrink-0 text-amber-500" strokeWidth={2} />
                   <div>
                     <div className="text-[13px] font-bold text-amber-700">Đã gửi yêu cầu, đang chờ xử lý</div>
-                    <div className="text-[12px] text-amber-600">
-                      Bạn đã yêu cầu rút {formatCurrency(pendingRequest.amount)}. Admin sẽ xử lý và chuyển khoản sớm nhất.
-                    </div>
+                    <div className="text-[12px] text-amber-600 mt-[2px]">Bạn đã yêu cầu rút {formatCurrency(pendingRequest.amount)}. Admin sẽ xử lý sớm nhất.</div>
                   </div>
                 </div>
               ) : (
-                <button
-                  type="button"
-                  onClick={handleSubmitRequest}
-                  disabled={!canRequest || submitting}
-                  className="flex h-12 w-full items-center justify-center gap-sm rounded-xl bg-[#e86a33] text-[15px] font-bold text-white transition-all hover:bg-[#d65d2a] active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-400"
-                >
-                  {submitting ? (
-                    <Loader2 size={18} className="animate-spin" />
-                  ) : (
-                    `Yêu cầu rút ${formatCurrency(stats.available)}`
-                  )}
+                <button type="button" onClick={handleSubmitRequest} disabled={!canRequest || submitting}
+                  className="flex h-12 w-full items-center justify-center gap-sm rounded-2xl bg-primary text-[14px] font-black text-white shadow-md shadow-primary/25 transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 disabled:shadow-none disabled:translate-y-0">
+                  {submitting ? <Loader2 size={16} className="animate-spin" /> : `Rút ${formatCurrency(stats.available)}`}
                 </button>
               )}
-              {!hasBankInfo && !pendingRequest && (
-                <p className="text-[11px] font-medium text-gray-400 -mt-sm">
-                  Cần cập nhật thông tin tài khoản ngân hàng trước khi gửi yêu cầu.
-                </p>
-              )}
+              {!hasBankInfo && !pendingRequest && <p className="text-[11px] text-mute -mt-sm">Cần cập nhật thông tin ngân hàng trước khi rút tiền.</p>}
             </div>
           </div>
 
-          {/* RIGHT COLUMN: TRANSACTION HISTORY */}
-          <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/5 overflow-hidden">
-            <div className="mb-lg flex items-center justify-between border-b border-gray-100 pb-md">
-              <h2 className="text-[16px] font-bold text-gray-900">Lịch sử giao dịch</h2>
-              <span className="text-[13px] font-medium text-gray-400">{history.length} giao dịch</span>
+          {/* ══ HISTORY ══ */}
+          <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/[0.05] overflow-hidden">
+            <div className="flex items-center gap-sm mb-xl">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-400 to-indigo-500 shadow-sm">
+                <Building2 size={16} strokeWidth={2} className="text-white" />
+              </div>
+              <div>
+                <h2 className="font-black text-[15px] text-ink">Lịch sử giao dịch</h2>
+                <p className="text-[11px] text-mute">{history.length} giao dịch</p>
+              </div>
             </div>
-
-            <div className="responsive-table overflow-x-auto -mx-xl">
-              <table className="w-full text-left min-w-[500px]">
+            <div className="overflow-x-auto -mx-xl">
+              <table className="w-full text-left min-w-[460px]">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="py-sm px-md text-[11px] font-bold uppercase tracking-wider text-gray-400">Thời gian</th>
-                    <th className="py-sm px-md text-[11px] font-bold uppercase tracking-wider text-gray-400">Số tiền</th>
-                    <th className="py-sm px-md text-[11px] font-bold uppercase tracking-wider text-gray-400">Trạng thái</th>
-                    <th className="py-sm px-md text-[11px] font-bold uppercase tracking-wider text-gray-400">Mã phiếu</th>
+                    {["Thời gian","Số tiền","Trạng thái","Mã phiếu"].map((h) => (
+                      <th key={h} className="py-sm px-md text-[10px] font-bold uppercase tracking-wider text-mute/60">{h}</th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
                   {history.length === 0 ? (
-                    <tr>
-                      <td colSpan={4} className="py-2xl text-center">
-                        <span className="text-[14px] font-bold text-gray-400">Chưa có giao dịch nào</span>
+                    <tr><td colSpan={4} className="py-2xl text-center">
+                      <img src="/nhimchodoi.png" alt="" className="h-16 w-16 object-contain mx-auto mb-sm opacity-60" />
+                      <p className="text-[13px] font-bold text-mute">Chưa có giao dịch nào</p>
+                    </td></tr>
+                  ) : history.map((tx, idx) => (
+                    <tr key={idx} className="border-b border-gray-50 last:border-0 hover:bg-primary/[0.02] transition-colors">
+                      <td className="py-md px-md text-[12px] font-medium text-mute">{tx.time}</td>
+                      <td className="py-md px-md text-[13px] font-black text-ink">{tx.amount}</td>
+                      <td className="py-md px-md">
+                        <span className={`inline-flex items-center gap-xs rounded-full px-sm py-[3px] text-[11px] font-bold ${tx.status === "paid" ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>
+                          {tx.status === "paid" ? "✓ Đã nhận" : tx.status}
+                        </span>
                       </td>
+                      <td className="py-md px-md text-[11px] font-mono text-mute/60">{tx.code}</td>
                     </tr>
-                  ) : (
-                    history.map((tx, idx) => (
-                      <tr key={idx} className="border-b border-gray-50 last:border-0 hover:bg-gray-50">
-                        <td className="py-md px-md text-[13px] font-medium text-gray-600">{tx.time}</td>
-                        <td className="py-md px-md text-[13px] font-bold text-gray-900">{tx.amount}</td>
-                        <td className="py-md px-md text-[13px] font-medium text-gray-600">
-                          <span className={`inline-flex items-center rounded-md px-2 py-1 text-[11px] font-bold ${
-                            tx.status === 'paid' ? 'bg-emerald-50 text-emerald-600' : 'bg-gray-100 text-gray-600'
-                          }`}>
-                            {tx.status === 'paid' ? 'Đã nhận' : tx.status}
-                          </span>
-                        </td>
-                        <td className="py-md px-md text-[13px] font-mono text-gray-500">{tx.code}</td>
-                      </tr>
-                    ))
-                  )}
+                  ))}
                 </tbody>
               </table>
             </div>
-            <Pagination totalPages={totalPages} currentPage={currentPage} />
+            <div className="pt-md"><Pagination totalPages={totalPages} currentPage={currentPage} /></div>
           </div>
         </div>
       </div>
 
-      {/* MODAL: CHỈNH SỬA THÔNG TIN */}
+      {/* ══ MODAL ══ */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-md sm:p-0">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-md">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
-          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-xl fade-in-up">
-            <div className="flex items-center justify-between border-b border-gray-100 p-lg">
-              <h3 className="text-[18px] font-bold text-gray-900">Thông tin thanh toán</h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="rounded-full p-sm text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900"
-              >
-                <X size={20} strokeWidth={2.5} />
+          <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-2xl fade-in">
+            <div className="flex items-center justify-between border-b border-gray-100 px-xl py-lg">
+              <div className="flex items-center gap-sm">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-pink-400 shadow-sm">
+                  <Building2 size={16} strokeWidth={2} className="text-white" />
+                </div>
+                <h3 className="font-black text-[16px] text-ink">Thông tin ngân hàng</h3>
+              </div>
+              <button onClick={() => setIsModalOpen(false)} className="rounded-full p-sm text-mute hover:bg-gray-100 hover:text-ink transition-colors">
+                <X size={18} strokeWidth={2.5} />
               </button>
             </div>
-
-            <form onSubmit={handleSavePaymentInfo} className="p-lg">
-              <div className="space-y-lg">
-                {/* Bank Section */}
-                <div>
-                  <h4 className="mb-sm flex items-center gap-xs text-[14px] font-bold text-gray-900">
-                    <Building2 size={16} className="text-[#e86a33]" />
-                    Chuyển khoản Ngân hàng
-                  </h4>
-                  <div className="space-y-sm">
-                    <div className="relative">
-                      <label className="mb-xs block text-[12px] font-bold text-gray-600">Ngân hàng</label>
-                      <input
-                        type="text"
-                        value={bankSearch}
-                        onChange={(e) => {
-                          setBankSearch(e.target.value);
-                          setFormBankName("");
-                          setShowBankOptions(true);
-                        }}
-                        onFocus={() => setShowBankOptions(true)}
-                        onBlur={() => setTimeout(() => setShowBankOptions(false), 150)}
-                        placeholder="Gõ để tìm ngân hàng..."
-                        className="h-11 w-full rounded-xl border border-gray-200 bg-white px-md text-[14px] font-medium text-gray-900 focus:border-[#e86a33] focus:outline-none focus:ring-1 focus:ring-[#e86a33]"
-                      />
-                      {showBankOptions && (
-                        <div className="absolute z-10 mt-xs max-h-[220px] w-full overflow-y-auto rounded-xl border border-gray-200 bg-white shadow-lg">
-                          {filteredBanks.length === 0 ? (
-                            <div className="px-md py-sm text-[13px] text-gray-400">Không tìm thấy ngân hàng phù hợp</div>
-                          ) : (
-                            filteredBanks.map((b) => (
-                              <button
-                                key={b}
-                                type="button"
-                                onMouseDown={() => selectBank(b)}
-                                className={`block w-full px-md py-sm text-left text-[13px] font-medium transition-colors hover:bg-orange-50 ${
-                                  b === formBankName ? "bg-orange-50 text-[#e86a33]" : "text-gray-700"
-                                }`}
-                              >
-                                {b}
-                              </button>
-                            ))
-                          )}
-                        </div>
-                      )}
+            <form onSubmit={handleSavePaymentInfo} className="p-xl flex flex-col gap-lg">
+              <div className="flex flex-col gap-xs">
+                <label className="text-[12px] font-bold uppercase tracking-wider text-mute/70">Ngân hàng</label>
+                <div className="relative">
+                  <input type="text" value={bankSearch}
+                    onChange={(e) => { setBankSearch(e.target.value); setFormBankName(""); setShowBankOptions(true); }}
+                    onFocus={() => setShowBankOptions(true)}
+                    onBlur={() => setTimeout(() => setShowBankOptions(false), 150)}
+                    placeholder="Gõ để tìm ngân hàng..."
+                    className="h-12 w-full rounded-xl border-2 border-ink/10 bg-white px-md text-[14px] font-medium text-ink focus:border-primary focus:outline-none focus:shadow-[0_0_0_4px_rgba(236,64,122,0.08)]"
+                  />
+                  {showBankOptions && (
+                    <div className="absolute z-10 mt-xs max-h-[220px] w-full overflow-y-auto rounded-2xl border border-gray-100 bg-white shadow-xl">
+                      {filteredBanks.length === 0
+                        ? <div className="px-md py-sm text-[13px] text-mute">Không tìm thấy</div>
+                        : filteredBanks.map((b) => (
+                          <button key={b} type="button" onMouseDown={() => selectBank(b)}
+                            className={`block w-full px-md py-sm text-left text-[13px] font-medium transition-colors hover:bg-primary/5 ${b === formBankName ? "bg-primary/5 text-primary font-bold" : "text-ink"}`}>
+                            {b}
+                          </button>
+                        ))
+                      }
                     </div>
-                    <div>
-                      <label className="mb-xs block text-[12px] font-bold text-gray-600">Số tài khoản</label>
-                      <input
-                        type="text"
-                        value={formBankAccountNumber}
-                        onChange={(e) => setFormBankAccountNumber(e.target.value)}
-                        placeholder="VD: 1903..."
-                        className="h-11 w-full rounded-xl border border-gray-200 px-md text-[14px] font-medium focus:border-[#e86a33] focus:outline-none focus:ring-1 focus:ring-[#e86a33]"
-                      />
-                    </div>
-                    <div>
-                      <label className="mb-xs block text-[12px] font-bold text-gray-600">Tên chủ tài khoản</label>
-                      <input
-                        type="text"
-                        value={formBankAccountName}
-                        onChange={(e) => setFormBankAccountName(e.target.value)}
-                        placeholder="VD: NGUYEN VAN A"
-                        className="h-11 w-full rounded-xl border border-gray-200 px-md text-[14px] font-medium uppercase focus:border-[#e86a33] focus:outline-none focus:ring-1 focus:ring-[#e86a33]"
-                      />
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
-
-              <div className="mt-xl flex gap-sm">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="h-12 flex-1 rounded-xl bg-gray-100 text-[14px] font-bold text-gray-600 transition-colors hover:bg-gray-200"
-                >
-                  Huỷ
-                </button>
-                <button
-                  type="submit"
-                  disabled={isSaving}
-                  className="flex h-12 flex-1 items-center justify-center gap-sm rounded-xl bg-[#e86a33] text-[14px] font-bold text-white transition-colors hover:bg-[#d65d2a] disabled:opacity-50"
-                >
-                  {isSaving ? <Loader2 size={18} className="animate-spin" /> : "Lưu thay đổi"}
+              <div className="flex flex-col gap-xs">
+                <label className="text-[12px] font-bold uppercase tracking-wider text-mute/70">Số tài khoản</label>
+                <input type="text" value={formBankAccountNumber} onChange={(e) => setFormBankAccountNumber(e.target.value)}
+                  placeholder="VD: 1903..."
+                  className="h-12 w-full rounded-xl border-2 border-ink/10 bg-white px-md text-[14px] font-medium text-ink focus:border-primary focus:outline-none focus:shadow-[0_0_0_4px_rgba(236,64,122,0.08)]" />
+              </div>
+              <div className="flex flex-col gap-xs">
+                <label className="text-[12px] font-bold uppercase tracking-wider text-mute/70">Tên chủ tài khoản</label>
+                <input type="text" value={formBankAccountName} onChange={(e) => setFormBankAccountName(e.target.value)}
+                  placeholder="VD: NGUYEN VAN A"
+                  className="h-12 w-full rounded-xl border-2 border-ink/10 bg-white px-md text-[14px] font-medium text-ink uppercase focus:border-primary focus:outline-none focus:shadow-[0_0_0_4px_rgba(236,64,122,0.08)]" />
+              </div>
+              <div className="flex gap-sm pt-sm">
+                <button type="button" onClick={() => setIsModalOpen(false)} className="h-12 flex-1 rounded-2xl bg-gray-100 text-[14px] font-bold text-ink/60 hover:bg-gray-200 transition-colors">Huỷ</button>
+                <button type="submit" disabled={isSaving} className="flex h-12 flex-1 items-center justify-center gap-sm rounded-2xl bg-primary text-[14px] font-black text-white shadow-md shadow-primary/25 hover:bg-primary-active transition-colors disabled:opacity-50">
+                  {isSaving ? <Loader2 size={16} className="animate-spin" /> : "Lưu thay đổi"}
                 </button>
               </div>
             </form>

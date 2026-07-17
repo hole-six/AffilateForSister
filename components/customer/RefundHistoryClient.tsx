@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Store, ShoppingBag, Music2, Copy, ExternalLink } from "lucide-react";
+import { Store, ShoppingBag, Copy, ExternalLink } from "lucide-react";
 import { formatDate } from "@/lib/format";
 import { Pagination } from "@/components/ui/Pagination";
 import { ServerSearchInput } from "@/components/ui/ServerSearchInput";
@@ -9,7 +9,6 @@ import { useModal } from "@/components/ui/ModalProvider";
 
 const PLATFORM_STYLE: Record<string, { icon: typeof ShoppingBag; color: string }> = {
   SHOPEE: { icon: ShoppingBag, color: "#ee4d2d" },
-  TIKTOK: { icon: Music2, color: "#000000" },
   LAZADA: { icon: Store, color: "#0f146d" },
   TIKI: { icon: Store, color: "#1a73e8" },
 };
@@ -93,7 +92,7 @@ export function RefundHistoryClient({ links, totalPages, currentPage, totalCount
                     <p className="mt-[2px] truncate text-[14px] font-bold text-gray-900">
                       {l.productTitle ?? `Sản phẩm từ ${l.platform.name} (${l.shortCode})`}
                     </p>
-                    <a href={l.shortUrl ?? "#"} target="_blank" rel="noreferrer" className="mt-[2px] block truncate text-[12px] font-medium text-gray-400 transition-colors hover:text-[#e86a33]">
+                    <a href={l.shortUrl ?? "#"} target="_blank" rel="noreferrer" className="mt-[2px] block truncate text-[12px] font-medium text-gray-400 transition-colors hover:text-[#EC407A]">
                       {l.shortUrl}
                     </a>
                   </div>

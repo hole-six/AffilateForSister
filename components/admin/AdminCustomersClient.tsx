@@ -120,7 +120,7 @@ export function AdminCustomersClient({ customers, totalPages, currentPage, count
                     <Td>
                       <Link
                         href={`/admin/customers/${c.id}`}
-                        className="font-bold text-gray-900 hover:text-[#e86a33] transition-colors"
+                        className="font-bold text-gray-900 hover:text-[#EC407A] transition-colors"
                       >
                         {c.fullName}
                       </Link>

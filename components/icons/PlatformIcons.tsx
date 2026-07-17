@@ -28,18 +28,6 @@ export function ZaloIcon(props: IconProps) {
   return <Icons8Image {...props} style="color" slug="zalo" alt="Zalo" />;
 }
 
-export function YoutubeIcon(props: IconProps) {
-  return <Icons8Image {...props} style="color" slug="youtube-play" alt="Youtube" />;
-}
-
-export function InstagramIcon(props: IconProps) {
-  return <Icons8Image {...props} style="color" slug="instagram-new" alt="Instagram" />;
-}
-
-export function ThreadsIcon(props: IconProps) {
-  return <Icons8Image {...props} style="ios-filled" slug="threads" alt="Threads" />;
-}
-
 export function ShopeeIcon({ size = 22, className = "" }: IconProps) {
   return (
     <svg
@@ -92,8 +80,4 @@ export function GoogleIcon({ size = 22, className = "" }: IconProps) {
       />
     </svg>
   );
-}
-
-export function TiktokIcon(props: IconProps) {
-  return <Icons8Image {...props} style="color" slug="tiktok" alt="Tiktok" />;
 }

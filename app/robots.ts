@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin", "/app", "/api"],
       },
     ],
-    sitemap: "https://iviback.vn/sitemap.xml",
+    sitemap: "https://nhimhoahong.site/sitemap.xml",
   };
 }

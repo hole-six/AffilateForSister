@@ -42,11 +42,15 @@ const config: Config = {
           cyan: "#38c8ff",
         },
       },
+      // Thang bo góc sắc nét hơn bản gốc (6–14px thay vì 12–24px) — card/input
+      // dùng rounded-xl/2xl/3xl khắp app nên đổi giá trị ở đây đổi luôn toàn hệ thống.
       borderRadius: {
-        sm: "8px",
-        md: "12px",
-        lg: "16px",
-        xl: "24px",
+        sm: "6px",
+        md: "8px",
+        lg: "10px",
+        xl: "12px",
+        "2xl": "12px",
+        "3xl": "14px",
         pill: "9999px",
       },
       fontFamily: {

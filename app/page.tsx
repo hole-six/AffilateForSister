@@ -4,26 +4,26 @@ import { getSession } from "@/lib/auth";
 import { LandingPage } from "@/components/marketing/LandingPage";
 
 export const metadata: Metadata = {
-  title: "iviback — Mua sắm Shopee, TikTok Shop nhận hoàn tiền tự động",
+  title: "Nhím — Mua sắm Shopee nhận hoàn tiền tự động",
   description:
-    "Dán link Shopee hoặc TikTok Shop, nhận link hoàn tiền tự động. Rút tiền từ 10.000đ, tích hợp bot Telegram, miễn phí hoàn toàn.",
+    "Dán link Shopee, nhận link hoàn tiền tự động. Rút tiền từ 10.000đ, tích hợp bot Telegram, miễn phí hoàn toàn.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "iviback — Mua sắm thông minh, nhận hoàn tiền tự động",
+    title: "Nhím — Mua sắm thông minh, nhận hoàn tiền tự động",
     description:
-      "Nền tảng affiliate hoàn tiền cho Shopee và TikTok Shop. Rút tiền từ 10.000đ, tích hợp bot Telegram.",
+      "Nền tảng affiliate hoàn tiền cho Shopee. Rút tiền từ 10.000đ, tích hợp bot Telegram.",
     type: "website",
     locale: "vi_VN",
     url: "/",
-    siteName: "iviback",
-    images: [{ url: "/icontitle.png", width: 1536, height: 1024, alt: "iviback - Nền tảng hoàn tiền affiliate" }],
+    siteName: "Nhím",
+    images: [{ url: "/landingpage.png", width: 1630, height: 965, alt: "Nhím - Nền tảng hoàn tiền affiliate" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "iviback — Mua sắm thông minh, nhận hoàn tiền tự động",
+    title: "Nhím — Mua sắm thông minh, nhận hoàn tiền tự động",
     description:
-      "Nền tảng affiliate hoàn tiền cho Shopee và TikTok Shop. Rút tiền từ 10.000đ, tích hợp bot Telegram.",
-    images: ["/icontitle.png"],
+      "Nền tảng affiliate hoàn tiền cho Shopee. Rút tiền từ 10.000đ, tích hợp bot Telegram.",
+    images: ["/landingpage.png"],
   },
 };
 
@@ -32,18 +32,18 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://iviback.vn/#website",
-      url: "https://iviback.vn",
-      name: "iviback",
-      description: "Nền tảng affiliate hoàn tiền cho Shopee và TikTok Shop tại Việt Nam.",
+      "@id": "https://nhimhoahong.site/#website",
+      url: "https://nhimhoahong.site",
+      name: "Nhím",
+      description: "Nền tảng affiliate hoàn tiền cho Shopee tại Việt Nam.",
       inLanguage: "vi-VN",
     },
     {
       "@type": "Organization",
-      "@id": "https://iviback.vn/#organization",
-      name: "iviback",
-      url: "https://iviback.vn",
-      logo: "https://iviback.vn/icontitle.png",
+      "@id": "https://nhimhoahong.site/#organization",
+      name: "Nhím",
+      url: "https://nhimhoahong.site",
+      logo: "https://nhimhoahong.site/nhimchaomung.png",
       telephone: "+84965965439",
       contactPoint: {
         "@type": "ContactPoint",
@@ -53,10 +53,8 @@ const jsonLd = {
         availableLanguage: "Vietnamese",
       },
       sameAs: [
-        "https://www.facebook.com/share/1BShYKizDV/?mibextid=wwXIfr",
-        "https://www.tiktok.com/@vi_ha790?_r=1&_t=ZS-983XgTM1aum",
-        "https://www.instagram.com/imviihaaa?igsh=M2RqZml1NHpzbmgx&utm_source=qr",
-        "https://youtube.com/@hoanphihoahongaff?si=aNywoErGCAi7BGxV",
+        "https://www.facebook.com/layeu.chicothe.169",
+        "https://zalo.me/0898204657",
       ],
     },
     {
@@ -88,10 +86,10 @@ const jsonLd = {
         },
         {
           "@type": "Question",
-          name: "Hệ thống hỗ trợ những sàn nào?",
+          name: "Hệ thống hỗ trợ sàn nào?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Hiện tại hỗ trợ Shopee và TikTok Shop. Các sàn khác sẽ được bổ sung trong thời gian tới.",
+            text: "Hiện tại hệ thống tập trung đối soát Shopee để đảm bảo hoàn tiền chính xác và nhanh nhất.",
           },
         },
       ],

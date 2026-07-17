@@ -1,13 +1,13 @@
 {
-  "name": "iviback",
-  "short_name": "iviback",
+  "name": "Nhím",
+  "short_name": "Nhím",
   "description": "Nền tảng affiliate hoàn tiền cho Shopee và TikTok Shop tại Việt Nam.",
   "start_url": "/app",
   "id": "/app",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
-  "theme_color": "#e86a33",
+  "theme_color": "#EC407A",
   "lang": "vi",
   "icons": [
     {

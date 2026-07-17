@@ -18,7 +18,7 @@ export function FloatingQuickAccess({ unreadCount }: { unreadCount: number }) {
           title="Liên hệ hỗ trợ"
           className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-105 active:scale-95"
         >
-          <Headphones size={24} strokeWidth={2.25} className="text-[#e86a33]" />
+          <Headphones size={24} strokeWidth={2.25} className="text-[#EC407A]" />
         </button>
 
         <Link
@@ -26,7 +26,7 @@ export function FloatingQuickAccess({ unreadCount }: { unreadCount: number }) {
           title="Thông báo"
           className="relative flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-105 active:scale-95"
         >
-          <Bell size={24} strokeWidth={2.25} className="text-[#e86a33]" />
+          <Bell size={24} strokeWidth={2.25} className="text-[#EC407A]" />
           {unreadCount > 0 && (
             <span className="absolute -top-1 -right-1 flex h-6 min-w-[24px] items-center justify-center rounded-full bg-negative px-1 text-[11px] font-bold text-white ring-2 ring-white">
               {unreadCount > 99 ? "99+" : unreadCount}
@@ -47,12 +47,12 @@ export function FloatingQuickAccess({ unreadCount }: { unreadCount: number }) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 z-10 flex items-center justify-between px-xl py-lg border-b border-gray-100 bg-white rounded-t-3xl"
-              style={{ background: "linear-gradient(135deg,#fff3ee,#fde8d8)" }}>
+              style={{ background: "linear-gradient(135deg,#fdeef4,#fdebf2)" }}>
               <div className="flex items-center gap-sm">
-                <img src="/heoQA.png" alt="" className="h-10 w-10 object-contain" />
+                <img src="/nhimqa.png" alt="" className="h-10 w-10 object-contain" />
                 <div>
                   <h3 className="text-[16px] font-black text-gray-900">Hỗ trợ nhanh</h3>
-                  <p className="text-[12px] text-gray-500">Liên hệ với Ví Heo qua các kênh dưới đây</p>
+                  <p className="text-[12px] text-gray-500">Liên hệ với Ví Nhím qua các kênh dưới đây</p>
                 </div>
               </div>
               <button
@@ -67,14 +67,14 @@ export function FloatingQuickAccess({ unreadCount }: { unreadCount: number }) {
               <Link
                 href="/app/notifications"
                 onClick={() => setShowSupport(false)}
-                className="flex items-center gap-md rounded-2xl bg-[#fff0e6] p-lg ring-1 ring-[#e86a33]/20 transition-colors hover:bg-[#ffe4d3]"
+                className="flex items-center gap-md rounded-2xl bg-[#fdebf2] p-lg ring-1 ring-[#EC407A]/20 transition-colors hover:bg-[#fcdae7]"
               >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e86a33] text-white shadow-md shadow-[#e86a33]/25">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#EC407A] text-white shadow-md shadow-[#EC407A]/25">
                   <MessagesSquare size={18} strokeWidth={2.25} />
                 </div>
                 <div className="flex-1">
                   <div className="font-bold text-gray-900">Nhắn tin với cộng đồng</div>
-                  <div className="text-[12px] text-gray-500">Trò chuyện trực tiếp cùng đội ngũ Ví Heo và các thành viên khác</div>
+                  <div className="text-[12px] text-gray-500">Trò chuyện trực tiếp cùng đội ngũ Ví Nhím và các thành viên khác</div>
                 </div>
               </Link>
 

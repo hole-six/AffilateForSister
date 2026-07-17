@@ -100,9 +100,9 @@ function BatchDetailModal({ batchId, onClose }: { batchId: string; onClose: () =
       >
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between px-xl py-lg border-b border-gray-100 bg-white rounded-t-3xl"
-          style={{ background: "linear-gradient(135deg,#fff3ee,#fde8d8)" }}>
+          style={{ background: "linear-gradient(135deg,#fdeef4,#fdebf2)" }}>
           <div className="flex items-center gap-sm">
-            <img src="/heovitien.png" alt="" className="h-10 w-10 object-contain" />
+            <img src="/nhimgiohang.png" alt="" className="h-10 w-10 object-contain" />
             <div>
               <h3 className="text-[16px] font-black text-gray-900">Chi tiết phiếu thanh toán</h3>
               {batch && <p className="text-[12px] font-mono text-gray-500">{batch.paymentCode}</p>}
@@ -117,7 +117,7 @@ function BatchDetailModal({ batchId, onClose }: { batchId: string; onClose: () =
         <div className="p-xl flex flex-col gap-lg">
           {loading ? (
             <div className="flex flex-col items-center py-2xl gap-md">
-              <img src="/heochodoi.png" alt="" className="h-16 w-16 object-contain animate-bounce" />
+              <img src="/nhimchodoi.png" alt="" className="h-16 w-16 object-contain animate-bounce" />
               <p className="text-[13px] text-gray-400 font-medium">Đang tải dữ liệu...</p>
             </div>
           ) : !batch ? (
@@ -144,7 +144,7 @@ function BatchDetailModal({ batchId, onClose }: { batchId: string; onClose: () =
                 </div>
                 <div className="ml-auto text-right">
                   <p className="text-[11px] text-gray-400">Tổng tiền</p>
-                  <p className="text-[18px] font-black text-[#e86a33]">{formatCurrency(Number(batch.totalAmount))}</p>
+                  <p className="text-[18px] font-black text-[#EC407A]">{formatCurrency(Number(batch.totalAmount))}</p>
                 </div>
               </div>
 
@@ -152,7 +152,7 @@ function BatchDetailModal({ batchId, onClose }: { batchId: string; onClose: () =
               <div className="rounded-2xl bg-gray-50 border border-gray-100 p-lg">
                 <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mb-md">Thông tin khách hàng</p>
                 <div className="flex items-center gap-md mb-md">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#e86a33] to-[#d65d2a] text-white font-black text-[15px]">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#EC407A] to-[#c2185b] text-white font-black text-[15px]">
                     {batch.customer.fullName.charAt(0).toUpperCase()}
                   </div>
                   <div>
@@ -163,7 +163,7 @@ function BatchDetailModal({ batchId, onClose }: { batchId: string; onClose: () =
                 <div className="flex flex-col gap-2">
                   {batch.customer.bankAccountNumber && (
                     <div className="flex items-center gap-sm rounded-xl bg-white p-sm ring-1 ring-gray-100">
-                      <CreditCard size={14} className="text-[#e86a33] shrink-0" />
+                      <CreditCard size={14} className="text-[#EC407A] shrink-0" />
                       <div className="flex-1 min-w-0">
                         <p className="text-[11px] font-bold text-gray-800">{batch.customer.bankName}</p>
                         <p className="font-mono text-[11px] text-gray-500">{batch.customer.bankAccountNumber} — {batch.customer.bankAccountName}</p>
@@ -321,7 +321,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
         <input type="text" placeholder="Tìm tên khách, mã KH, mã phiếu, số tài khoản..."
           value={search}
           onChange={(e) => { setSearch(e.target.value); setCurrentPage(1); }}
-          className="h-11 w-full rounded-2xl bg-white pl-10 pr-md text-[14px] font-medium shadow-sm ring-1 ring-black/[0.08] focus:outline-none focus:ring-2 focus:ring-[#e86a33]/40 transition-all"
+          className="h-11 w-full rounded-2xl bg-white pl-10 pr-md text-[14px] font-medium shadow-sm ring-1 ring-black/[0.08] focus:outline-none focus:ring-2 focus:ring-[#EC407A]/40 transition-all"
         />
       </div>
 
@@ -336,7 +336,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
             <button key={t.id} onClick={() => handleTabChange(t.id)}
               className={`flex h-10 shrink-0 items-center gap-xs whitespace-nowrap rounded-full px-lg text-[13px] font-bold transition-all ${
                 activeTab === t.id
-                  ? "bg-[#e86a33] text-white shadow-md shadow-[#e86a33]/25"
+                  ? "bg-[#EC407A] text-white shadow-md shadow-[#EC407A]/25"
                   : "bg-white text-gray-500 ring-1 ring-black/[0.08] hover:bg-gray-50 hover:text-gray-900"
               }`}>
               <span className={activeTab === t.id ? "text-white/80" : "text-gray-400"}>{t.icon}</span>
@@ -349,16 +349,16 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
         </div>
         {activeTab === "pending" && pendingList.length > 0 && (
           <div className="flex items-center gap-md rounded-2xl bg-white px-lg py-sm shadow-sm ring-1 ring-black/[0.06] shrink-0">
-            <img src="/heovitien.png" alt="" className="h-10 w-10 object-contain" />
+            <img src="/nhimgiohang.png" alt="" className="h-10 w-10 object-contain" />
             <div>
               <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">{pendingList.length} khách chờ thanh toán</div>
-              <div className="text-[16px] font-black text-[#e86a33]">{formatCurrency(todayTotal)}</div>
+              <div className="text-[16px] font-black text-[#EC407A]">{formatCurrency(todayTotal)}</div>
             </div>
           </div>
         )}
         {activeTab === "history" && (
           <div className="flex items-center gap-md rounded-2xl bg-white px-lg py-sm shadow-sm ring-1 ring-black/[0.06] shrink-0">
-            <img src="/heongansach.png" alt="" className="h-10 w-10 object-contain" />
+            <img src="/nhimbaomat.png" alt="" className="h-10 w-10 object-contain" />
             <div>
               <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Đã thanh toán</div>
               <div className="text-[16px] font-black text-emerald-600">{paidBatches.length} phiếu</div>
@@ -371,7 +371,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
       {activeTab === "pending" && (
         filteredPending.length === 0 ? (
           <div className="flex flex-col items-center gap-sm rounded-3xl bg-white py-3xl shadow-sm ring-1 ring-black/[0.06]">
-            <img src="/heochodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
+            <img src="/nhimchodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
             <span className="text-[14px] font-bold text-gray-400">Chưa có khách nào yêu cầu rút tiền 🎉</span>
           </div>
         ) : (
@@ -381,7 +381,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
                 <div key={c.id} className="rounded-3xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] flex flex-col gap-md hover:shadow-md transition-shadow">
                   {/* Avatar + name */}
                   <div className="flex items-center gap-sm">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#e86a33] to-[#d65d2a] text-white font-black text-[16px] shadow-md shadow-[#e86a33]/20">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#EC407A] to-[#c2185b] text-white font-black text-[16px] shadow-md shadow-[#EC407A]/20">
                       {c.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -398,14 +398,14 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
                   {/* Amount */}
                   <div>
                     <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 mb-[2px]">{c.count} đơn cần thanh toán</div>
-                    <div className="text-[28px] font-black text-[#e86a33] leading-none tabular-nums">{formatCurrency(c.amount)}</div>
+                    <div className="text-[28px] font-black text-[#EC407A] leading-none tabular-nums">{formatCurrency(c.amount)}</div>
                   </div>
 
                   {/* Payment info */}
                   {c.bankAccountNumber ? (
                     <div className="flex flex-col gap-[6px]">
                       <div className="flex items-center gap-sm rounded-xl bg-gray-50 p-sm ring-1 ring-gray-100">
-                        <CreditCard size={13} className="text-[#e86a33] shrink-0" />
+                        <CreditCard size={13} className="text-[#EC407A] shrink-0" />
                         <div className="min-w-0 flex-1">
                           <div className="text-[11px] font-bold text-gray-800 truncate">{c.bankName}</div>
                           <div className="font-mono text-[11px] text-gray-500">{c.bankAccountNumber}</div>
@@ -448,14 +448,14 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
       {activeTab === "waiting" && (
         filteredWaiting.length === 0 ? (
           <div className="flex flex-col items-center gap-sm rounded-3xl bg-white py-3xl shadow-sm ring-1 ring-black/[0.06]">
-            <img src="/heochaomung.png" alt="" className="h-16 w-16 object-contain opacity-70" />
+            <img src="/nhimchaomung.png" alt="" className="h-16 w-16 object-contain opacity-70" />
             <span className="text-[14px] font-bold text-gray-400">Không có đơn nào đang chờ Shopee duyệt 🎉</span>
           </div>
         ) : (
           <div className="flex flex-col gap-lg">
             {/* Info box */}
             <div className="flex items-start gap-sm rounded-2xl bg-blue-50 border border-blue-200 px-lg py-md">
-              <img src="/heochodoi.png" alt="" className="h-7 w-7 object-contain shrink-0 mt-[1px]" />
+              <img src="/nhimchodoi.png" alt="" className="h-7 w-7 object-contain shrink-0 mt-[1px]" />
               <p className="text-[13px] text-blue-700 font-medium leading-relaxed">
                 Các đơn bên dưới có <strong>tiếp thị liên kết chưa hoàn thành</strong> (Shopee chưa xác nhận hoa hồng).
                 Khi nào import lại CSV mới và Shopee đã duyệt, đơn sẽ tự chuyển sang <strong>"Sẵn sàng thanh toán"</strong>.
@@ -557,7 +557,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
                           )}
                         </td>
                         <td className="px-md py-md font-semibold text-gray-800">{b.customerName}</td>
-                        <td className="px-md py-md font-black text-[14px] text-[#e86a33]">{formatCurrency(b.totalAmount)}</td>
+                        <td className="px-md py-md font-black text-[14px] text-[#EC407A]">{formatCurrency(b.totalAmount)}</td>
                         <td className="px-md py-md text-center">
                           <span className="inline-flex items-center justify-center h-6 min-w-6 rounded-md bg-gray-100 font-mono text-[12px] font-bold text-gray-600 px-sm">
                             {b.itemCount}
@@ -573,7 +573,7 @@ export function AdminPaymentsClient({ pendingList, batches, waitingList }: Props
                           <div className="flex items-center gap-sm">
                             {/* Xem chi tiết — quan trọng nhất */}
                             <button onClick={() => setViewingBatch(b.id)}
-                              className="flex h-8 items-center gap-xs rounded-xl bg-[#e86a33]/10 px-sm text-[12px] font-bold text-[#e86a33] hover:bg-[#e86a33]/20 transition-colors">
+                              className="flex h-8 items-center gap-xs rounded-xl bg-[#EC407A]/10 px-sm text-[12px] font-bold text-[#EC407A] hover:bg-[#EC407A]/20 transition-colors">
                               <Eye size={13} strokeWidth={2} /> Xem
                             </button>
                             {/* Mark paid nếu chưa xong */}

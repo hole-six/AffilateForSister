@@ -2,24 +2,32 @@ import { LucideIcon } from "lucide-react";
 
 const toneConfig = {
   default: {
-    iconBg: "bg-slate-100 text-slate-600",
-    gradient: "from-slate-50/80 to-white",
-    accent: "#64748b",
+    gradient: "from-slate-400 to-gray-500",
+    bg: "bg-slate-50",
+    text: "text-slate-600",
+    value: "text-slate-800",
+    nhim: "/nhimchodoi.png",
   },
   positive: {
-    iconBg: "bg-emerald-50 text-emerald-600",
-    gradient: "from-emerald-50/60 to-white",
-    accent: "#10b981",
+    gradient: "from-emerald-400 to-teal-500",
+    bg: "bg-emerald-50",
+    text: "text-emerald-600",
+    value: "text-emerald-700",
+    nhim: "/nhimmagiamgia.png",
   },
   warning: {
-    iconBg: "bg-amber-50 text-amber-600",
-    gradient: "from-amber-50/60 to-white",
-    accent: "#f59e0b",
+    gradient: "from-amber-400 to-orange-400",
+    bg: "bg-amber-50",
+    text: "text-amber-600",
+    value: "text-amber-700",
+    nhim: "/nhimthongbao.png",
   },
   negative: {
-    iconBg: "bg-red-50 text-red-600",
-    gradient: "from-red-50/60 to-white",
-    accent: "#ef4444",
+    gradient: "from-red-400 to-rose-500",
+    bg: "bg-red-50",
+    text: "text-red-600",
+    value: "text-red-700",
+    nhim: "/nhimchaomung.png",
   },
 };
 
@@ -39,40 +47,23 @@ export function StatCard({
   const cfg = toneConfig[tone];
 
   return (
-    <div
-      className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${cfg.gradient} p-lg shadow-sm ring-1 ring-black/[0.06] transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:shadow-black/8`}
-    >
-      {/* Top accent line animated on hover */}
-      <div
-        className="absolute top-0 left-4 right-4 h-[2px] rounded-b-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: `linear-gradient(90deg, transparent, ${cfg.accent}, transparent)` }}
-      />
+    <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.05] transition-all hover:-translate-y-0.5 hover:shadow-md">
+      {/* Top accent strip */}
+      <div className={`absolute inset-x-0 top-0 h-[3px] rounded-t-2xl bg-gradient-to-r ${cfg.gradient}`} />
 
-      <div className="flex items-start justify-between">
-        <div
-          className={`flex h-10 w-10 items-center justify-center rounded-xl ${cfg.iconBg} transition-transform duration-150 group-hover:scale-110`}
-        >
-          <Icon size={18} strokeWidth={1.75} />
+      <div className="flex items-start justify-between mb-md pt-xs">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/[0.06]">
+          <img src={cfg.nhim} alt="" className="h-9 w-9 object-contain" />
         </div>
         {tag && (
-          <span className="rounded-pill bg-black/5 px-sm py-[3px] text-[10px] font-semibold text-black/35">
+          <span className={`rounded-full ${cfg.bg} ${cfg.text} px-sm py-[3px] text-[10px] font-bold`}>
             {tag}
           </span>
         )}
       </div>
 
-      <div className="mt-lg">
-        <div className="text-[11px] font-semibold uppercase tracking-wider text-black/35">{label}</div>
-        <div className="mt-xs text-[22px] font-bold text-gray-900 tabular-nums leading-tight">
-          {value}
-        </div>
-      </div>
-
-      {/* Bottom-right decorative circle */}
-      <div
-        className="pointer-events-none absolute -right-4 -bottom-4 h-16 w-16 rounded-full opacity-10 transition-transform duration-300 group-hover:scale-125"
-        style={{ background: cfg.accent }}
-      />
+      <div className="text-[11px] font-semibold uppercase tracking-wider text-ink/40 mb-xs">{label}</div>
+      <div className={`text-[20px] font-black tabular-nums leading-tight ${cfg.value}`}>{value}</div>
     </div>
   );
 }

@@ -51,14 +51,14 @@ export function extractFirstUrl(text: string | null | undefined): string | null 
 export function buildZaloHelpMessage(): string {
   return [
     "Mình đã nhận được tin nhắn.",
-    "Bạn hãy gửi link sản phẩm Shopee hoặc TikTok để mình đổi sang link affiliate hoàn tiền.",
-    "Ví dụ: https://shopee.vn/... hoặc https://vt.tiktok.com/...",
+    "Bạn hãy gửi link sản phẩm Shopee để mình đổi sang link affiliate hoàn tiền.",
+    "Ví dụ: https://shopee.vn/...",
   ].join("\n");
 }
 
 export function buildUnsupportedPlatformMessage(rawUrl: string): string {
   return [
-    "Mình đã nhận được link nhưng hiện chỉ hỗ trợ Shopee và TikTok.",
+    "Mình đã nhận được link nhưng hiện chỉ hỗ trợ Shopee.",
     `Link bạn gửi: ${rawUrl}`,
   ].join("\n");
 }
@@ -144,9 +144,8 @@ export async function sendZaloOaTextMessage(params: {
   }
 }
 
-export function mapDetectedPlatformToCode(url: string): "SHOPEE" | "TIKTOK" | null {
+export function mapDetectedPlatformToCode(url: string): "SHOPEE" | null {
   const platform = detectPlatform(url);
   if (platform === "shopee") return "SHOPEE";
-  if (platform === "tiktok") return "TIKTOK";
   return null;
 }

@@ -2,8 +2,10 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/Button";
 import { AdminOrdersClient } from "@/components/admin/AdminOrdersClient";
-import { Upload } from "lucide-react";
+import { Upload, Package, Wallet, Clock, TriangleAlert } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { StatCard } from "@/components/ui/StatCard";
 
 export default async function AdminOrdersPage({ searchParams }: { searchParams: { q?: string; page?: string; tab?: string; sort?: string; order?: string } }) {
   const page = Number(searchParams.page) || 1;
@@ -83,77 +85,30 @@ export default async function AdminOrdersPage({ searchParams }: { searchParams: 
   return (
     <div className="flex flex-col gap-lg fade-in">
 
-      {/* ── HERO BANNER ── */}
-      <div
-        className="relative overflow-hidden rounded-3xl p-xl sm:p-2xl"
-        style={{ background: "linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #d1fae5 100%)" }}
-      >
-        <div className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-[#6ee7b7] opacity-25" />
-        <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#a7f3d0] opacity-35" />
-        <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-lg flex-wrap">
-          <div className="flex items-center gap-lg">
-            <img src="/heongansach.png" alt="" className="h-20 w-20 object-contain drop-shadow-lg shrink-0" />
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-widest text-emerald-500 mb-1">Quản lý đối soát</p>
-              <h1 className="text-[26px] sm:text-[30px] font-black leading-tight text-[#064e3b]">Đơn hàng</h1>
-              <p className="mt-1 text-[13px] text-emerald-600">
-                <span className="font-bold text-emerald-700">{allCount.toLocaleString()}</span> đơn •{" "}
-                Công nợ chưa trả:{" "}
-                <span className="font-bold text-[#e86a33]">{formatCurrency(sums.moneyInTotal)}</span>
-              </p>
-            </div>
-          </div>
+      <PageHeader
+        icon="/nhimbaomat.png"
+        title="Đơn hàng"
+        subtitle="Quản lý đối soát"
+        stats={[
+          { label: "Đơn:", value: allCount.toLocaleString() },
+          { label: "Công nợ:", value: formatCurrency(sums.moneyInTotal) },
+        ]}
+        action={
           <Link href="/admin/orders/import">
             <Button variant="primary" size="md">
               <Upload size={16} strokeWidth={2} />
               Import đối soát
             </Button>
           </Link>
-        </div>
-      </div>
+        }
+      />
 
       {/* ── STAT CARDS ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-md">
-        <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-slate-50 opacity-60" />
-          <div className="relative flex items-center gap-md">
-            <img src="/heongansach.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Tổng đơn</div>
-              <div className="text-[24px] font-black text-gray-900 tabular-nums leading-tight">{allCount.toLocaleString()}</div>
-            </div>
-          </div>
-        </div>
-        <div className="group relative overflow-hidden rounded-2xl p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all"
-          style={{ background: "linear-gradient(135deg,#e8f5e9,#f1fdf2)" }}>
-          <div className="relative flex items-center gap-md">
-            <img src="/heovitien.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Tiền đã về</div>
-              <div className="text-[16px] font-black text-emerald-600 tabular-nums leading-tight">{formatCurrency(sums.moneyInTotal)}</div>
-            </div>
-          </div>
-        </div>
-        <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
-          <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 opacity-60" />
-          <div className="relative flex items-center gap-md">
-            <img src="/heochodoi.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Chưa trả</div>
-              <div className="text-[24px] font-black text-[#e86a33] tabular-nums leading-tight">{unpaidCount}</div>
-            </div>
-          </div>
-        </div>
-        <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-50 to-rose-50 opacity-60" />
-          <div className="relative flex items-center gap-md">
-            <img src="/heoQA.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
-            <div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Chưa map</div>
-              <div className="text-[24px] font-black text-red-500 tabular-nums leading-tight">{unassignedCount}</div>
-            </div>
-          </div>
-        </div>
+        <StatCard icon={Package} label="Tổng đơn" value={allCount.toLocaleString()} />
+        <StatCard icon={Wallet} label="Tiền đã về" value={formatCurrency(sums.moneyInTotal)} tone="positive" />
+        <StatCard icon={Clock} label="Chưa trả" value={String(unpaidCount)} tone="warning" />
+        <StatCard icon={TriangleAlert} label="Chưa map" value={String(unassignedCount)} tone="negative" />
       </div>
 
       <AdminOrdersClient

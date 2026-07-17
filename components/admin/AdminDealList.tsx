@@ -69,7 +69,10 @@ function EditDealModal({ deal, onSave, onClose }: {
         fd.append("image", imageFile);
         // Gửi qua PATCH endpoint cần hỗ trợ FormData — ta dùng API khác
         const res = await fetch(`/api/deals/${deal.id}/edit`, { method: "POST", body: fd });
-        if (!res.ok) throw new Error("Lỗi cập nhật");
+        if (!res.ok) {
+          const d = await res.json().catch(() => ({}));
+          throw new Error(d.error || "Lỗi cập nhật");
+        }
         const data = await res.json();
         onSave({ ...deal, ...data.deal });
       } else {
@@ -113,8 +116,8 @@ function EditDealModal({ deal, onSave, onClose }: {
         {/* Header */}
         <div className="sticky top-0 z-10 flex items-center justify-between px-xl py-lg border-b border-gray-100 bg-white rounded-t-3xl">
           <div className="flex items-center gap-sm">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#e86a33]/10">
-              <Pencil size={15} className="text-[#e86a33]" />
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#EC407A]/10">
+              <Pencil size={15} className="text-[#EC407A]" />
             </div>
             <h3 className="text-[15px] font-bold text-gray-900">Chỉnh sửa Deal</h3>
           </div>
@@ -133,7 +136,7 @@ function EditDealModal({ deal, onSave, onClose }: {
               </div>
               <button
                 onClick={() => { navigator.clipboard.writeText(deal.shortUrl!); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-                className={`shrink-0 flex items-center gap-xs rounded-lg px-sm py-xs text-[12px] font-bold transition-all ${copied ? "bg-green-500 text-white" : "bg-[#e86a33] text-white hover:bg-[#d4602e]"}`}
+                className={`shrink-0 flex items-center gap-xs rounded-lg px-sm py-xs text-[12px] font-bold transition-all ${copied ? "bg-green-500 text-white" : "bg-[#EC407A] text-white hover:bg-[#c2185b]"}`}
               >
                 {copied ? <><Check size={12} /> Đã copy</> : <><Copy size={12} /> Copy</>}
               </button>
@@ -146,7 +149,7 @@ function EditDealModal({ deal, onSave, onClose }: {
               <div className="text-[12px] font-bold text-gray-600 uppercase tracking-wide mb-sm">Ảnh sản phẩm</div>
               <div
                 onClick={() => fileRef.current?.click()}
-                className="relative h-32 w-32 rounded-2xl overflow-hidden bg-gray-100 cursor-pointer border-2 border-dashed border-gray-200 hover:border-[#e86a33] transition-colors group"
+                className="relative h-32 w-32 rounded-2xl overflow-hidden bg-gray-100 cursor-pointer border-2 border-dashed border-gray-200 hover:border-[#EC407A] transition-colors group"
               >
                 {displayImage ? (
                   <>
@@ -179,7 +182,7 @@ function EditDealModal({ deal, onSave, onClose }: {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={2}
-                  className="w-full rounded-2xl bg-gray-50 px-md py-sm text-[14px] ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#e86a33]/50 resize-none"
+                  className="w-full rounded-2xl bg-gray-50 px-md py-sm text-[14px] ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#EC407A]/50 resize-none"
                 />
               </div>
             </div>
@@ -192,7 +195,7 @@ function EditDealModal({ deal, onSave, onClose }: {
               <TextInput type="number" value={originalPrice} onChange={(e) => setOriginalPrice(e.target.value)} className="bg-gray-50" placeholder="500000" />
             </div>
             <div className="flex flex-col gap-xs">
-              <label className="text-[12px] font-bold text-[#e86a33] uppercase tracking-wide">Giá sale</label>
+              <label className="text-[12px] font-bold text-[#EC407A] uppercase tracking-wide">Giá sale</label>
               <TextInput type="number" value={salePrice} onChange={(e) => setSalePrice(e.target.value)} className="bg-orange-50" placeholder="250000" />
             </div>
             <div className="flex flex-col gap-xs">
@@ -263,7 +266,7 @@ export function AdminDealList({ initialDeals, totalPages, currentPage }: { initi
     return (
       <div className="flex flex-col items-center py-3xl text-center">
         <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-orange-50 mb-lg">
-          <Flame size={36} className="text-[#e86a33]/40" strokeWidth={1.5} />
+          <Flame size={36} className="text-[#EC407A]/40" strokeWidth={1.5} />
         </div>
         <p className="text-[15px] font-bold text-gray-400">Chưa có deal nào</p>
         <p className="text-[13px] text-gray-300 mt-xs">Bấm "Thêm Deal Mới" để bắt đầu</p>
@@ -334,7 +337,7 @@ export function AdminDealList({ initialDeals, totalPages, currentPage }: { initi
                   <td className="px-md py-sm text-right" data-label="Giá">
                     {deal.salePrice ? (
                       <div>
-                        <div className="font-black text-[#e86a33] text-[15px]">{formatCurrency(deal.salePrice)}</div>
+                        <div className="font-black text-[#EC407A] text-[15px]">{formatCurrency(deal.salePrice)}</div>
                         {deal.originalPrice && (
                           <div className="text-[11px] text-gray-400 line-through">{formatCurrency(deal.originalPrice)}</div>
                         )}
@@ -369,7 +372,7 @@ export function AdminDealList({ initialDeals, totalPages, currentPage }: { initi
                       </a>
                       <button
                         onClick={() => setEditingDeal(deal)}
-                        className="h-8 w-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-[#e86a33] hover:bg-orange-50 transition-colors"
+                        className="h-8 w-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-[#EC407A] hover:bg-orange-50 transition-colors"
                         title="Chỉnh sửa"
                       >
                         <Pencil size={15} />

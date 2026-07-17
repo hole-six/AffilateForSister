@@ -3,6 +3,7 @@
 import { CalendarDays, ExternalLink, Package } from "lucide-react";
 import { Pagination } from "@/components/ui/Pagination";
 import { ServerSearchInput } from "@/components/ui/ServerSearchInput";
+import { PageHeader } from "@/components/ui/PageHeader";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Order = {
@@ -48,7 +49,7 @@ export function CustomerOrdersClient({ orders, totalPages, currentPage, counts }
       return <span className="inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-bold text-emerald-600">Hoàn thành</span>;
     }
     if (order.orderStatus === "approved" && order.payoutStatus !== "paid") {
-      return <span className="inline-flex rounded-md bg-[#fff0e6] px-2 py-1 text-[11px] font-bold text-[#e86a33]">Đang xử lý</span>;
+      return <span className="inline-flex rounded-md bg-[#fdebf2] px-2 py-1 text-[11px] font-bold text-[#EC407A]">Đang xử lý</span>;
     }
     return <span className="inline-flex rounded-md bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-600">Chờ xác nhận</span>;
   };
@@ -61,15 +62,12 @@ export function CustomerOrdersClient({ orders, totalPages, currentPage, counts }
 
   return (
     <div className="mx-auto flex max-w-5xl flex-col gap-lg fade-in pb-2xl">
-      {/* HEADER */}
-      <div className="flex items-center gap-sm">
-        <h1 className="text-[28px] font-black tracking-tight text-gray-900">
-          Đơn hàng
-        </h1>
-        <div className="flex h-6 items-center justify-center rounded-full bg-gray-100 px-[10px] text-[12px] font-bold text-gray-500 ring-1 ring-gray-200">
-          {counts.all}
-        </div>
-      </div>
+      <PageHeader
+        icon="/nhimbaomat.png"
+        title="Đơn hàng"
+        subtitle="Toàn bộ đơn hàng đã ghi nhận, theo dõi trạng thái từng đơn."
+        stats={[{ label: "Tổng:", value: String(counts.all) }]}
+      />
 
       {/* TOOLBAR */}
       <div className="flex flex-col gap-sm sm:flex-row sm:items-center">
@@ -91,15 +89,15 @@ export function CustomerOrdersClient({ orders, totalPages, currentPage, counts }
       <div className="mt-md rounded-3xl bg-white p-md shadow-sm ring-1 ring-black/5 min-h-[400px]">
         {orders.length === 0 ? (
           <div className="flex h-full min-h-[350px] flex-col items-center justify-center">
-            <img src="/heochodoi.png" alt="" className="mb-md h-20 w-20 object-contain opacity-90" />
+            <img src="/nhimchodoi.png" alt="" className="mb-md h-20 w-20 object-contain opacity-90" />
             <div className="text-[14px] font-bold text-gray-400">Chưa có đơn hàng</div>
           </div>
         ) : (
           <div className="flex flex-col gap-sm">
             {orders.map((o) => (
-              <div key={o.id} className="group flex flex-col sm:flex-row sm:items-center justify-between gap-md rounded-2xl border border-gray-100 p-md transition-all hover:border-[#e86a33]/30 hover:bg-[#fff0e6]/20">
+              <div key={o.id} className="group flex flex-col sm:flex-row sm:items-center justify-between gap-md rounded-2xl border border-gray-100 p-md transition-all hover:border-[#EC407A]/30 hover:bg-[#fdebf2]/20">
                 <div className="flex items-start gap-md">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-400 ring-1 ring-gray-100 group-hover:bg-white group-hover:text-[#e86a33]">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-400 ring-1 ring-gray-100 group-hover:bg-white group-hover:text-[#EC407A]">
                     <Package size={20} strokeWidth={2.5} />
                   </div>
                   <div>
@@ -133,10 +131,10 @@ export function CustomerOrdersClient({ orders, totalPages, currentPage, counts }
                     <div className="text-[14px] font-bold text-gray-900">{o.orderAmount}</div>
                   </div>
                   <div>
-                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#e86a33]">Tiền hoàn</div>
-                    <div className="text-[15px] font-black text-[#e86a33]">{o.customerRewardAmount}</div>
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#EC407A]">Tiền hoàn</div>
+                    <div className="text-[15px] font-black text-[#EC407A]">{o.customerRewardAmount}</div>
                   </div>
-                  <button className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-400 transition-colors hover:bg-[#e86a33] hover:text-white">
+                  <button className="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-50 text-gray-400 transition-colors hover:bg-[#EC407A] hover:text-white">
                     <ExternalLink size={16} strokeWidth={2.5} />
                   </button>
                 </div>

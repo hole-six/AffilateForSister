@@ -54,20 +54,20 @@ export async function sendMail(params: {
   }
 }
 
-const BRAND_COLOR = "#e86a33";
+const BRAND_COLOR = "#EC407A";
 
 function emailShell(bodyHtml: string): string {
   return `
 <!DOCTYPE html>
 <html lang="vi">
 <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /></head>
-<body style="margin:0;padding:0;background-color:#f6f3ef;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f6f3ef;padding:32px 16px;">
+<body style="margin:0;padding:0;background-color:#fdf3f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#fdf3f7;padding:32px 16px;">
     <tr>
       <td align="center">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#ffffff;border-radius:24px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
           <tr>
-            <td style="background:linear-gradient(135deg,#fff3ee 0%,#fde8d8 50%,#ffecd2 100%);padding:32px 32px 24px;text-align:center;">
+            <td style="background:linear-gradient(135deg,#fdebf2 0%,#fcdae7 50%,#fbd6e6 100%);padding:32px 32px 24px;text-align:center;">
               <div style="font-size:15px;font-weight:800;color:${BRAND_COLOR};letter-spacing:0.5px;text-transform:uppercase;">Affiliate Hoàn Tiền</div>
             </td>
           </tr>
@@ -77,8 +77,8 @@ function emailShell(bodyHtml: string): string {
             </td>
           </tr>
           <tr>
-            <td style="padding:20px 32px;background:#faf8f6;text-align:center;">
-              <div style="font-size:12px;color:#a0816a;">Đây là email tự động, vui lòng không trả lời trực tiếp email này.</div>
+            <td style="padding:20px 32px;background:#fff6f9;text-align:center;">
+              <div style="font-size:12px;color:#a87a8d;">Đây là email tự động, vui lòng không trả lời trực tiếp email này.</div>
             </td>
           </tr>
         </table>
@@ -91,26 +91,26 @@ function emailShell(bodyHtml: string): string {
 
 export function buildPasswordResetEmail(params: { fullName: string; resetUrl: string; expiresInMinutes: number }): string {
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">Đặt lại mật khẩu</h1>
-    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#6b5847;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
-    <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">Đặt lại mật khẩu</h1>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#5c3747;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
+    <p style="margin:0 0 24px;font-size:14px;line-height:1.6;color:#5c3747;">
       Chúng tôi nhận được yêu cầu đặt lại mật khẩu cho tài khoản của bạn. Bấm nút bên dưới để tạo mật khẩu mới
       (liên kết có hiệu lực trong ${params.expiresInMinutes} phút):
     </p>
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto 24px;">
       <tr>
-        <td style="border-radius:16px;background:linear-gradient(135deg,${BRAND_COLOR},#d65d2a);">
+        <td style="border-radius:16px;background:linear-gradient(135deg,${BRAND_COLOR},#c2185b);">
           <a href="${params.resetUrl}" style="display:inline-block;padding:14px 32px;font-size:14px;font-weight:800;color:#ffffff;text-decoration:none;border-radius:16px;">
             Đặt lại mật khẩu
           </a>
         </td>
       </tr>
     </table>
-    <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#a0816a;">
+    <p style="margin:0 0 8px;font-size:12px;line-height:1.6;color:#a87a8d;">
       Nếu nút không hoạt động, sao chép đường dẫn sau vào trình duyệt:
     </p>
     <p style="margin:0 0 24px;font-size:12px;line-height:1.6;color:${BRAND_COLOR};word-break:break-all;">${params.resetUrl}</p>
-    <p style="margin:0;font-size:12px;line-height:1.6;color:#a0816a;">
+    <p style="margin:0;font-size:12px;line-height:1.6;color:#a87a8d;">
       Nếu bạn không yêu cầu đặt lại mật khẩu, hãy bỏ qua email này — mật khẩu hiện tại của bạn vẫn an toàn.
     </p>
   `);
@@ -118,9 +118,9 @@ export function buildPasswordResetEmail(params: { fullName: string; resetUrl: st
 
 export function buildPasswordChangedEmail(params: { fullName: string }): string {
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">Mật khẩu đã được thay đổi</h1>
-    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#6b5847;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
-    <p style="margin:0;font-size:14px;line-height:1.6;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">Mật khẩu đã được thay đổi</h1>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#5c3747;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
+    <p style="margin:0;font-size:14px;line-height:1.6;color:#5c3747;">
       Mật khẩu tài khoản của bạn vừa được thay đổi thành công. Nếu đây không phải là bạn, vui lòng liên hệ hỗ trợ ngay lập tức.
     </p>
   `);
@@ -133,12 +133,12 @@ export function buildAdminWithdrawRequestEmail(params: {
 }): string {
   const amountText = new Intl.NumberFormat("vi-VN").format(Math.round(params.amount)) + "đ";
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">🔔 Khách yêu cầu rút tiền</h1>
-    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">🔔 Khách yêu cầu rút tiền</h1>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#5c3747;">
       Khách hàng <strong>${escapeHtml(params.customerName)}</strong> (<code>${escapeHtml(params.customerCode)}</code>) vừa gửi yêu cầu rút tiền.
     </p>
     <p style="margin:0 0 24px;font-size:28px;font-weight:900;color:${BRAND_COLOR};">${amountText}</p>
-    <p style="margin:0;font-size:13px;line-height:1.6;color:#a0816a;">
+    <p style="margin:0;font-size:13px;line-height:1.6;color:#a87a8d;">
       Vào trang Admin → Thanh toán để xem chi tiết và tạo phiếu.
     </p>
   `);
@@ -154,8 +154,8 @@ export function buildAdminNewRegistrationEmail(params: {
 }): string {
   const sourceLabel = params.source === "google" ? "Đăng ký qua Google" : "Đăng ký qua Email";
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">🎉 Khách hàng mới đăng ký</h1>
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">🎉 Khách hàng mới đăng ký</h1>
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#5c3747;">
       <tr>
         <td style="padding:4px 0;">Họ tên</td>
         <td style="padding:4px 0;text-align:right;font-weight:700;">${escapeHtml(params.fullName)}</td>
@@ -183,7 +183,7 @@ export function buildAdminNewRegistrationEmail(params: {
           : ""
       }
     </table>
-    <p style="margin:0;font-size:13px;line-height:1.6;color:#a0816a;">
+    <p style="margin:0;font-size:13px;line-height:1.6;color:#a87a8d;">
       Vào trang Admin → Khách hàng để xem chi tiết.
     </p>
   `);
@@ -200,15 +200,15 @@ export function buildCustomerWithdrawRequestEmail(params: {
     ? "•••• " + params.bankAccountNumber.slice(-4)
     : null;
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">🔒 Yêu cầu rút tiền vừa được tạo</h1>
-    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#6b5847;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
-    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">🔒 Yêu cầu rút tiền vừa được tạo</h1>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#5c3747;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#5c3747;">
       Chúng tôi vừa ghi nhận một yêu cầu rút tiền từ tài khoản của bạn:
     </p>
     <p style="margin:0 0 16px;font-size:28px;font-weight:900;color:${BRAND_COLOR};">${amountText}</p>
     ${
       params.bankName || maskedAccount
-        ? `<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#6b5847;">
+        ? `<table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#5c3747;">
             ${
               params.bankName
                 ? `<tr><td style="padding:4px 0;">Ngân hàng</td><td style="padding:4px 0;text-align:right;font-weight:700;">${escapeHtml(params.bankName)}</td></tr>`
@@ -240,13 +240,13 @@ export function buildPaymentSentEmail(params: {
 }): string {
   const amountText = new Intl.NumberFormat("vi-VN").format(Math.round(params.amount)) + "đ";
   return emailShell(`
-    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1f14;">💸 Tiền đã được chuyển!</h1>
-    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#6b5847;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
-    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#6b5847;">
+    <h1 style="margin:0 0 16px;font-size:22px;font-weight:900;color:#2d1420;">💸 Tiền đã được chuyển!</h1>
+    <p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#5c3747;">Xin chào <strong>${escapeHtml(params.fullName)}</strong>,</p>
+    <p style="margin:0 0 16px;font-size:14px;line-height:1.6;color:#5c3747;">
       Chúng tôi vừa chuyển khoản thành công số tiền hoàn của bạn:
     </p>
     <p style="margin:0 0 20px;font-size:28px;font-weight:900;color:${BRAND_COLOR};">${amountText}</p>
-    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#6b5847;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;margin:0 0 20px;font-size:13px;color:#5c3747;">
       <tr>
         <td style="padding:4px 0;">Mã phiếu</td>
         <td style="padding:4px 0;text-align:right;font-weight:700;">${escapeHtml(params.paymentCode)}</td>
@@ -262,7 +262,7 @@ export function buildPaymentSentEmail(params: {
           : ""
       }
     </table>
-    <p style="margin:0;font-size:12px;line-height:1.6;color:#a0816a;">
+    <p style="margin:0;font-size:12px;line-height:1.6;color:#a87a8d;">
       Cảm ơn bạn đã đồng hành cùng hệ thống hoàn tiền! Kiểm tra tài khoản ngân hàng của bạn trong ít phút tới.
     </p>
   `);

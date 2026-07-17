@@ -1,6 +1,4 @@
-import { buildTikTokAffiliateUrlViaAccessTrade } from "./accesstrade";
-
-export type DetectedPlatform = "shopee" | "tiktok" | "unknown";
+export type DetectedPlatform = "shopee" | "unknown";
 export type AffiliateSubIds = {
   subId1?: string;
   subId2?: string;
@@ -17,18 +15,17 @@ export function detectPlatform(rawUrl: string): DetectedPlatform {
   // shp.ee la domain rut gon chinh thuc cua Shopee (vn.shp.ee, s.shopee.vn...),
   // khong chua chuoi "shopee." nen phai kiem tra rieng.
   if (url.includes("shopee.") || url.includes("shp.ee")) return "shopee";
-  if (url.includes("tiktok.") || url.includes("vt.tiktok") || url.includes("vm.tiktok")) return "tiktok";
   return "unknown";
 }
 
-const SHORT_LINK_HOST_PATTERNS = [/(^|\.)shp\.ee$/, /(^|\.)s\.shopee\.vn$/, /(^|\.)vt\.tiktok\.com$/, /(^|\.)vm\.tiktok\.com$/];
+const SHORT_LINK_HOST_PATTERNS = [/(^|\.)shp\.ee$/, /(^|\.)s\.shopee\.vn$/];
 
 function isShortLinkHost(hostname: string): boolean {
   return SHORT_LINK_HOST_PATTERNS.some((pattern) => pattern.test(hostname.toLowerCase()));
 }
 
 /**
- * Link rut gon (shp.ee, s.shopee.vn, vt/vm.tiktok.com) chi la redirect stub —
+ * Link rut gon (shp.ee, s.shopee.vn) chi la redirect stub —
  * theo redirect thuc te de lay URL san pham that, tranh luu lai link co the
  * het han va giup lay duoc thong tin/anh san pham chinh xac hon.
  */
@@ -115,10 +112,8 @@ function safeDecodeURIComponent(value: string): string {
 }
 
 // NOTE: Shopee dung link mock dang s.shopee.vn/an_redir (chua co API affiliate
-// Shopee that — xem 05-ghi-chu-nghien-cuu-va-rui-ro.md). TikTok Shop di qua
-// AccessTrade (mang affiliate that, xem lib/accesstrade.ts) khi da cau hinh
-// ACCESSTRADE_API_TOKEN/ACCESSTRADE_TIKTOK_CAMPAIGN_ID, neu chua thi fallback
-// ve link mock (gan sub_id truc tiep vao URL goc) de khong lam gian doan flow.
+// Shopee that — xem 05-ghi-chu-nghien-cuu-va-rui-ro.md), fallback ve link mock
+// (gan sub_id truc tiep vao URL goc) de khong lam gian doan flow.
 export async function buildAffiliateUrl(
   normalizedUrl: string,
   trackingCode: string,
@@ -128,11 +123,6 @@ export async function buildAffiliateUrl(
   const platformCode = options?.platformCode?.toUpperCase();
   if (platformCode === "SHOPEE") {
     return buildShopeeAffiliateUrl(normalizedUrl, trackingCode, subIds);
-  }
-
-  if (platformCode === "TIKTOK") {
-    const accessTradeLink = await buildTikTokAffiliateUrlViaAccessTrade(normalizedUrl, trackingCode, subIds);
-    if (accessTradeLink) return accessTradeLink;
   }
 
   try {

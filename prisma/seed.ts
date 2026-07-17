@@ -26,12 +26,6 @@ async function main() {
     create: { code: "SHOPEE", name: "Shopee" },
   });
 
-  const tiktok = await prisma.platform.upsert({
-    where: { code: "TIKTOK" },
-    update: {},
-    create: { code: "TIKTOK", name: "TikTok Shop" },
-  });
-
   const customer = await prisma.customer.upsert({
     where: { customerCode: "C0001" },
     update: {},
@@ -120,33 +114,19 @@ async function main() {
     },
   });
 
-  await prisma.voucher.upsert({
-    where: { id: "seed-voucher-tiktok-1" },
-    update: {},
-    create: {
-      id: "seed-voucher-tiktok-1",
-      platformId: tiktok.id,
-      title: "Freeship toàn sàn",
-      voucherCode: "TTFREESHIP",
-      benefitText: "Miễn phí vận chuyển cho mọi đơn hàng",
-      status: "active",
-      priority: 1,
-    },
-  });
-
   await prisma.telegramAccount.upsert({
     where: { id: "seed-telegram-account-1" },
     update: {
-      botName: "Affiliate Hoan Tien Bot",
-      botUsername: "affiliate_hoantien_lehoa_bot",
+      botName: "Nhím Hoàn Tiền Bot",
+      botUsername: "Nhimhoantien_bot",
       botTokenHint: "configured-via-env",
       webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/api/telegram/webhook`,
       status: "active",
     },
     create: {
       id: "seed-telegram-account-1",
-      botName: "Affiliate Hoan Tien Bot",
-      botUsername: "affiliate_hoantien_lehoa_bot",
+      botName: "Nhím Hoàn Tiền Bot",
+      botUsername: "Nhimhoantien_bot",
       botTokenHint: "configured-via-env",
       webhookUrl: `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/api/telegram/webhook`,
       status: "active",

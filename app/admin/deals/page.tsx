@@ -68,10 +68,10 @@ export default async function AdminDealsPage({ searchParams }: { searchParams: {
         style={{ background: "linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fef3c7 100%)" }}
       >
         <div className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-[#fcd34d] opacity-25" />
-        <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#fdba74] opacity-30" />
+        <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#f48fb1] opacity-30" />
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-lg flex-wrap">
           <div className="flex items-center gap-lg">
-            <img src="/heogiamgia.png" alt="" className="h-20 w-20 object-contain drop-shadow-lg shrink-0" />
+            <img src="/nhimmagiamgia.png" alt="" className="h-20 w-20 object-contain drop-shadow-lg shrink-0" />
             <div>
               <p className="text-[11px] font-bold uppercase tracking-widest text-amber-500 mb-1">Hot Deals</p>
               <h1 className="text-[26px] sm:text-[30px] font-black leading-tight text-[#451a03]">Deals giảm giá</h1>
@@ -90,17 +90,17 @@ export default async function AdminDealsPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-amber-50 opacity-70" />
           <div className="relative flex items-center gap-md">
-            <img src="/heogiamgia.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimmagiamgia.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Tổng deal</div>
-              <div className="text-[26px] font-black text-[#e86a33] tabular-nums leading-tight">{allDealsCount}</div>
+              <div className="text-[26px] font-black text-[#EC407A] tabular-nums leading-tight">{allDealsCount}</div>
             </div>
           </div>
         </div>
         <div className="group relative overflow-hidden rounded-2xl p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all"
           style={{ background: "linear-gradient(135deg,#e8f5e9,#f1fdf2)" }}>
           <div className="relative flex items-center gap-md">
-            <img src="/heoqua.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimmagiamgia.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Đang hiện</div>
               <div className="text-[26px] font-black text-emerald-600 tabular-nums leading-tight">{activeDealsCount}</div>
@@ -110,7 +110,7 @@ export default async function AdminDealsPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
           <div className="absolute inset-0 bg-gradient-to-br from-sky-50 to-blue-50 opacity-60" />
           <div className="relative flex items-center gap-md">
-            <img src="/heothongbao.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimthongbao.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 flex items-center gap-1">
                 <MousePointerClick size={10} /> Tổng click
@@ -122,7 +122,7 @@ export default async function AdminDealsPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-slate-50 opacity-60" />
           <div className="relative flex items-center gap-md">
-            <img src="/heoQA.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimqa.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">TB/deal</div>
               <div className="text-[22px] font-black text-gray-600 tabular-nums leading-tight">{avgClicks}</div>
@@ -134,7 +134,7 @@ export default async function AdminDealsPage({ searchParams }: { searchParams: {
       {/* ── DEAL LIST ── */}
       <div className="rounded-3xl bg-white shadow-sm ring-1 ring-black/[0.06] overflow-hidden">
         <div className="flex items-center gap-sm px-xl pt-xl pb-lg border-b border-gray-100">
-          <img src="/heoquatang.png" alt="" className="h-8 w-8 object-contain" />
+          <img src="/nhimmagiamgia.png" alt="" className="h-8 w-8 object-contain" />
           <h2 className="text-[15px] font-bold text-gray-900">Danh sách Deals</h2>
           <span className="ml-auto text-[12px] font-semibold text-gray-400">{allDealsCount} deals</span>
         </div>

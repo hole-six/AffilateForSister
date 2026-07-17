@@ -2,9 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { generateShortCode, buildShortUrl } from "@/lib/shortLink";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
-import { randomUUID } from "crypto";
+import { saveDealImage, DealImageUploadError } from "@/lib/dealImageUpload";
 
 // GET: danh sách deals (public hoặc admin)
 export async function GET(req: NextRequest) {
@@ -52,12 +50,12 @@ export async function POST(req: NextRequest) {
   // Xử lý upload ảnh (nếu có)
   let uploadedImageUrl: string | null = null;
   if (imageFile && imageFile.size > 0) {
-    const uploadDir = path.join(process.cwd(), "public", "uploads", "deals");
-    await mkdir(uploadDir, { recursive: true });
-    const ext = imageFile.name.split(".").pop() ?? "jpg";
-    const filename = `${randomUUID()}.${ext}`;
-    await writeFile(path.join(uploadDir, filename), Buffer.from(await imageFile.arrayBuffer()));
-    uploadedImageUrl = `/uploads/deals/${filename}`;
+    try {
+      uploadedImageUrl = await saveDealImage(imageFile);
+    } catch (err) {
+      const message = err instanceof DealImageUploadError ? err.message : "Không upload được ảnh";
+      return NextResponse.json({ error: message }, { status: 400 });
+    }
   }
 
   // Dùng shortCode client đã pre-generate ở bước resolve, nếu không có thì tạo mới

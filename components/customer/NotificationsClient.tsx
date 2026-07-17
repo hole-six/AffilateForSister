@@ -18,7 +18,7 @@ const TYPE_STYLE: Record<string, { bg: string; ring: string }> = {
   order_approved: { bg: "bg-emerald-50", ring: "ring-emerald-100" },
   payment_paid: { bg: "bg-sky-50", ring: "ring-sky-100" },
   referral_bonus: { bg: "bg-purple-50", ring: "ring-purple-100" },
-  broadcast: { bg: "bg-[#fff0e6]", ring: "ring-[#e86a33]/20" },
+  broadcast: { bg: "bg-[#fdebf2]", ring: "ring-[#EC407A]/20" },
   system: { bg: "bg-gray-50", ring: "ring-gray-100" },
 };
 
@@ -76,7 +76,7 @@ export function NotificationsClient({
         <div className="text-[13px] text-gray-500">
           {unreadCount > 0 ? (
             <span>
-              Bạn có <span className="font-bold text-[#e86a33]">{unreadCount}</span> thông báo chưa đọc
+              Bạn có <span className="font-bold text-[#EC407A]">{unreadCount}</span> thông báo chưa đọc
             </span>
           ) : (
             "Bạn đã xem hết thông báo"
@@ -94,7 +94,7 @@ export function NotificationsClient({
 
       {notifications.length === 0 ? (
         <div className="flex flex-col items-center gap-sm rounded-3xl bg-white py-3xl shadow-sm ring-1 ring-black/5">
-          <img src="/heochodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
+          <img src="/nhimchodoi.png" alt="" className="h-16 w-16 object-contain opacity-70" />
           <span className="text-[14px] font-bold text-gray-400">Chưa có thông báo nào</span>
         </div>
       ) : (
@@ -109,7 +109,7 @@ export function NotificationsClient({
                   n.isRead ? "bg-white ring-black/5" : `${style.bg} ${style.ring}`
                 }`}
               >
-                {!n.isRead && <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-[#e86a33]" />}
+                {!n.isRead && <span className="mt-[6px] h-2 w-2 shrink-0 rounded-full bg-[#EC407A]" />}
                 <div className={`min-w-0 flex-1 ${n.isRead ? "ml-[16px]" : ""}`}>
                   <div className="flex items-center justify-between gap-md">
                     <span className={`text-[14px] ${n.isRead ? "font-medium text-gray-700" : "font-bold text-gray-900"}`}>

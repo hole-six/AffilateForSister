@@ -73,7 +73,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
         <div className="pointer-events-none absolute bottom-0 right-0 h-40 w-40 rounded-full bg-[#dde4ff] opacity-40" />
         <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-lg flex-wrap">
           <div className="flex items-center gap-lg">
-            <img src="/heochaomung.png" alt="" className="h-20 w-20 object-contain drop-shadow-lg shrink-0" />
+            <img src="/nhimchaomung.png" alt="" className="h-20 w-20 object-contain drop-shadow-lg shrink-0" />
             <div>
               <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-400 mb-1">Affiliate System</p>
               <h1 className="text-[26px] sm:text-[30px] font-black leading-tight text-[#1e1b4b]">Link Affiliate</h1>
@@ -91,7 +91,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
           <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-blue-50 opacity-60" />
           <div className="relative flex items-center gap-md">
-            <img src="/heodashboard.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimchaomung.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Tổng link</div>
               <div className="text-[26px] font-black text-gray-900 tabular-nums leading-tight">{totalCount}</div>
@@ -101,7 +101,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all"
           style={{ background: "linear-gradient(135deg,#e8f5e9,#f1fdf2)" }}>
           <div className="relative flex items-center gap-md">
-            <img src="/heongansach.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimbaomat.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Hoạt động</div>
               <div className="text-[26px] font-black text-emerald-600 tabular-nums leading-tight">{activeCount}</div>
@@ -111,7 +111,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
         <div className="group relative overflow-hidden rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/[0.06] hover:-translate-y-1 hover:shadow-md transition-all">
           <div className="absolute inset-0 bg-gradient-to-br from-violet-50 to-purple-50 opacity-60" />
           <div className="relative flex items-center gap-md">
-            <img src="/heothongbao.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
+            <img src="/nhimthongbao.png" alt="" className="h-12 w-12 object-contain transition-transform group-hover:scale-110" />
             <div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">Tổng click</div>
               <div className="text-[22px] font-black text-violet-600 tabular-nums leading-tight">{totalClicks.toLocaleString()}</div>
@@ -123,7 +123,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
       {/* ── QUICK LINK FORM ── */}
       <div className="rounded-3xl bg-white shadow-sm ring-1 ring-black/[0.06] overflow-hidden">
         <div className="flex items-center gap-sm px-xl pt-xl pb-lg border-b border-gray-100">
-          <img src="/heogiamgia.png" alt="" className="h-8 w-8 object-contain" />
+          <img src="/nhimmagiamgia.png" alt="" className="h-8 w-8 object-contain" />
           <h2 className="text-[15px] font-bold text-gray-900">Tạo link nhanh</h2>
         </div>
         <div className="p-xl">
@@ -137,7 +137,7 @@ export default async function AdminLinksPage({ searchParams }: { searchParams: {
       {/* ── LINK LIST ── */}
       <div className="rounded-3xl bg-white shadow-sm ring-1 ring-black/[0.06] overflow-hidden">
         <div className="flex items-center gap-sm px-xl pt-xl pb-lg border-b border-gray-100">
-          <img src="/heothongbao.png" alt="" className="h-8 w-8 object-contain" />
+          <img src="/nhimthongbao.png" alt="" className="h-8 w-8 object-contain" />
           <h2 className="text-[15px] font-bold text-gray-900">Lịch sử link đã tạo</h2>
           <span className="ml-auto text-[12px] font-semibold text-gray-400">{totalCount} link</span>
         </div>

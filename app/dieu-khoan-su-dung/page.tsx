@@ -3,18 +3,18 @@ import { MarketingHeader } from "@/components/marketing/MarketingHeader";
 import { MarketingFooter } from "@/components/marketing/MarketingFooter";
 
 export const metadata: Metadata = {
-  title: "Điều Khoản Sử Dụng — iviback",
+  title: "Điều Khoản Sử Dụng — Nhím",
   description:
-    "Điều khoản và điều kiện sử dụng nền tảng hoàn tiền iviback: cách hoạt động hoàn tiền, chương trình giới thiệu, rút tiền và trách nhiệm các bên.",
+    "Điều khoản và điều kiện sử dụng nền tảng hoàn tiền Nhím: cách hoạt động hoàn tiền, chương trình giới thiệu, rút tiền và trách nhiệm các bên.",
   alternates: { canonical: "/dieu-khoan-su-dung" },
   openGraph: {
-    title: "Điều Khoản Sử Dụng — iviback",
+    title: "Điều Khoản Sử Dụng — Nhím",
     description:
-      "Điều khoản và điều kiện sử dụng nền tảng hoàn tiền iviback: cách hoạt động hoàn tiền, chương trình giới thiệu, rút tiền và trách nhiệm các bên.",
+      "Điều khoản và điều kiện sử dụng nền tảng hoàn tiền Nhím: cách hoạt động hoàn tiền, chương trình giới thiệu, rút tiền và trách nhiệm các bên.",
     type: "website",
     locale: "vi_VN",
     url: "/dieu-khoan-su-dung",
-    siteName: "iviback",
+    siteName: "Nhím",
   },
 };
 
@@ -22,8 +22,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://iviback.vn/" },
-    { "@type": "ListItem", position: 2, name: "Điều khoản sử dụng", item: "https://iviback.vn/dieu-khoan-su-dung" },
+    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://nhimhoahong.site/" },
+    { "@type": "ListItem", position: 2, name: "Điều khoản sử dụng", item: "https://nhimhoahong.site/dieu-khoan-su-dung" },
   ],
 };
 
@@ -31,8 +31,8 @@ const SECTIONS = [
   {
     title: "1. Giới thiệu chung",
     body: [
-      "iviback (\"chúng tôi\", \"hệ thống\", \"dịch vụ\") là nền tảng affiliate hoàn tiền, giúp người dùng (\"bạn\", \"khách hàng\") nhận lại một phần hoa hồng affiliate khi mua sắm qua các sàn thương mại điện tử liên kết như Shopee và TikTok Shop.",
-      "Bằng việc truy cập, đăng ký tài khoản hoặc sử dụng bất kỳ tính năng nào của iviback (website, bot Telegram), bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ nội dung Điều khoản sử dụng này. Nếu không đồng ý, vui lòng ngừng sử dụng dịch vụ.",
+      "Nhím (\"chúng tôi\", \"hệ thống\", \"dịch vụ\") là nền tảng affiliate hoàn tiền, giúp người dùng (\"bạn\", \"khách hàng\") nhận lại một phần hoa hồng affiliate khi mua sắm qua sàn thương mại điện tử liên kết Shopee.",
+      "Bằng việc truy cập, đăng ký tài khoản hoặc sử dụng bất kỳ tính năng nào của Nhím (website, bot Telegram), bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ nội dung Điều khoản sử dụng này. Nếu không đồng ý, vui lòng ngừng sử dụng dịch vụ.",
     ],
   },
   {
@@ -55,8 +55,8 @@ const SECTIONS = [
     title: "4. Cách thức hoạt động của dịch vụ hoàn tiền",
     body: [
       "Bạn chọn sàn thương mại điện tử, dán link sản phẩm muốn mua vào hệ thống (qua website hoặc bot Telegram) để nhận về một link hoàn tiền riêng.",
-      "Khi bạn hoàn tất mua hàng thông qua đúng link này, sàn liên kết ghi nhận một khoản hoa hồng affiliate cho iviback. Sau khi đơn hàng được sàn xác nhận không bị huỷ/hoàn trả, hệ thống chia lại phần lớn khoản hoa hồng này cho bạn dưới dạng tiền hoàn vào ví.",
-      "Tỷ lệ chia hoa hồng cụ thể do iviback quy định và có thể điều chỉnh theo từng thời kỳ, ngành hàng hoặc chương trình khuyến mãi, được công bố công khai trên hệ thống tại thời điểm bạn tạo link.",
+      "Khi bạn hoàn tất mua hàng thông qua đúng link này, sàn liên kết ghi nhận một khoản hoa hồng affiliate cho Nhím. Sau khi đơn hàng được sàn xác nhận không bị huỷ/hoàn trả, hệ thống chia lại phần lớn khoản hoa hồng này cho bạn dưới dạng tiền hoàn vào ví.",
+      "Tỷ lệ chia hoa hồng cụ thể do Nhím quy định và có thể điều chỉnh theo từng thời kỳ, ngành hàng hoặc chương trình khuyến mãi, được công bố công khai trên hệ thống tại thời điểm bạn tạo link.",
     ],
   },
   {
@@ -68,22 +68,22 @@ const SECTIONS = [
       "Xoá các sản phẩm tương tự đã có sẵn trong giỏ hàng trước khi bấm vào link hoàn tiền.",
       "Không bấm vào bất kỳ link nào khác (livestream, quảng cáo, link từ nguồn khác) trong quá trình mua hàng.",
       "Hoàn tất thanh toán trong cùng một phiên trình duyệt đã mở link hoàn tiền.",
-      "iviback không có khả năng can thiệp hoặc bảo đảm cho các đơn hàng không tuân thủ đúng quy trình trên, do việc ghi nhận hoa hồng phụ thuộc hoàn toàn vào hệ thống đối soát của sàn liên kết.",
+      "Nhím không có khả năng can thiệp hoặc bảo đảm cho các đơn hàng không tuân thủ đúng quy trình trên, do việc ghi nhận hoa hồng phụ thuộc hoàn toàn vào hệ thống đối soát của sàn liên kết.",
     ],
   },
   {
     title: "6. Thời gian duyệt và rút tiền",
     body: [
-      "Sau khi đặt hàng, đơn của bạn ở trạng thái \"Chờ duyệt\" trong thời gian sàn liên kết xác nhận đơn không bị huỷ hay hoàn trả (thường từ vài ngày đến vài tuần tuỳ chính sách của từng sàn). iviback không quyết định và không rút ngắn được thời gian đối soát này.",
+      "Sau khi đặt hàng, đơn của bạn ở trạng thái \"Chờ duyệt\" trong thời gian sàn liên kết xác nhận đơn không bị huỷ hay hoàn trả (thường từ vài ngày đến vài tuần tuỳ chính sách của từng sàn). Nhím không quyết định và không rút ngắn được thời gian đối soát này.",
       "Khi đơn được duyệt, số tiền hoàn chuyển sang trạng thái \"Sẵn sàng rút\". Bạn cần khai báo đầy đủ, chính xác thông tin tài khoản ngân hàng nhận tiền trước khi gửi yêu cầu rút.",
-      "Mức rút tối thiểu là 10.000đ mỗi lần yêu cầu. Yêu cầu rút tiền được xử lý và chuyển khoản thủ công bởi đội ngũ iviback, thời gian xử lý thông thường trong vòng vài ngày làm việc.",
+      "Mức rút tối thiểu là 10.000đ mỗi lần yêu cầu. Yêu cầu rút tiền được xử lý và chuyển khoản thủ công bởi đội ngũ Nhím, thời gian xử lý thông thường trong vòng vài ngày làm việc.",
     ],
   },
   {
     title: "7. Chương trình giới thiệu bạn bè",
     body: [
       "Khi bạn giới thiệu người khác đăng ký tài khoản qua link mời của mình (bao gồm cả trường hợp người được mời đăng ký bằng email/mật khẩu hoặc bằng tài khoản Google), bạn có thể nhận thêm hoa hồng giới thiệu tính theo phần trăm trên số tiền hoàn của một số đơn hàng đầu tiên mà người đó thực hiện, trong một khoảng thời gian hiệu lực nhất định.",
-      "Tỷ lệ hoa hồng, số lượng đơn hàng tối đa và thời hạn hiệu lực của chương trình giới thiệu do iviback quy định, được công bố tại mục \"Mời bạn\" trên hệ thống và có thể thay đổi theo từng thời kỳ.",
+      "Tỷ lệ hoa hồng, số lượng đơn hàng tối đa và thời hạn hiệu lực của chương trình giới thiệu do Nhím quy định, được công bố tại mục \"Mời bạn\" trên hệ thống và có thể thay đổi theo từng thời kỳ.",
       "Hành vi tạo tài khoản ảo, tự giới thiệu chính mình bằng thiết bị/thông tin khác, hoặc mua bán link giới thiệu nhằm trục lợi đều bị coi là gian lận và có thể bị thu hồi hoa hồng, khoá tài khoản liên quan.",
     ],
   },
@@ -92,35 +92,35 @@ const SECTIONS = [
     list: [
       "Sử dụng thông tin cá nhân không thuộc quyền sở hữu của mình để đăng ký hoặc rút tiền.",
       "Tạo nhiều tài khoản, sử dụng bot tự động hoặc các thủ đoạn gian lận khác để trục lợi hoa hồng hoặc hoa hồng giới thiệu.",
-      "Can thiệp, phá hoại hoặc cố gắng truy cập trái phép vào hệ thống, cơ sở dữ liệu của iviback.",
+      "Can thiệp, phá hoại hoặc cố gắng truy cập trái phép vào hệ thống, cơ sở dữ liệu của Nhím.",
       "Sử dụng dịch vụ cho bất kỳ mục đích trái pháp luật nào theo quy định của pháp luật Việt Nam.",
     ],
   },
   {
-    title: "9. Quyền và trách nhiệm của iviback",
+    title: "9. Quyền và trách nhiệm của Nhím",
     body: [
-      "iviback có quyền tạm ngừng, từ chối chi trả hoặc khoá tài khoản nếu phát hiện dấu hiệu gian lận, vi phạm điều khoản này, hoặc theo yêu cầu của sàn liên kết/cơ quan chức năng có thẩm quyền.",
-      "iviback có trách nhiệm chi trả đầy đủ, đúng hạn số tiền hoàn hợp lệ theo đúng chính sách đã công bố, và bảo mật thông tin cá nhân của khách hàng theo Chính sách bảo mật.",
+      "Nhím có quyền tạm ngừng, từ chối chi trả hoặc khoá tài khoản nếu phát hiện dấu hiệu gian lận, vi phạm điều khoản này, hoặc theo yêu cầu của sàn liên kết/cơ quan chức năng có thẩm quyền.",
+      "Nhím có trách nhiệm chi trả đầy đủ, đúng hạn số tiền hoàn hợp lệ theo đúng chính sách đã công bố, và bảo mật thông tin cá nhân của khách hàng theo Chính sách bảo mật.",
     ],
   },
   {
     title: "10. Giới hạn trách nhiệm",
     body: [
-      "iviback đóng vai trò trung gian kết nối và không kiểm soát chính sách hoa hồng, thời gian đối soát, hay quyết định phê duyệt/từ chối đơn hàng của các sàn liên kết. Mọi thay đổi từ phía sàn (thay đổi tỷ lệ hoa hồng, huỷ đơn, từ chối ghi nhận) nằm ngoài khả năng kiểm soát của iviback.",
-      "iviback không chịu trách nhiệm với các tổn thất phát sinh từ việc khách hàng không tuân thủ đúng hướng dẫn sử dụng link hoàn tiền, cung cấp sai thông tin tài khoản ngân hàng, hoặc do sự cố kỹ thuật ngoài ý muốn từ bên thứ ba (sàn thương mại điện tử, ngân hàng, nhà cung cấp hạ tầng).",
+      "Nhím đóng vai trò trung gian kết nối và không kiểm soát chính sách hoa hồng, thời gian đối soát, hay quyết định phê duyệt/từ chối đơn hàng của các sàn liên kết. Mọi thay đổi từ phía sàn (thay đổi tỷ lệ hoa hồng, huỷ đơn, từ chối ghi nhận) nằm ngoài khả năng kiểm soát của Nhím.",
+      "Nhím không chịu trách nhiệm với các tổn thất phát sinh từ việc khách hàng không tuân thủ đúng hướng dẫn sử dụng link hoàn tiền, cung cấp sai thông tin tài khoản ngân hàng, hoặc do sự cố kỹ thuật ngoài ý muốn từ bên thứ ba (sàn thương mại điện tử, ngân hàng, nhà cung cấp hạ tầng).",
     ],
   },
   {
     title: "11. Thay đổi điều khoản",
     body: [
-      "iviback có thể cập nhật, sửa đổi Điều khoản sử dụng này theo từng thời kỳ để phù hợp với thực tế vận hành và quy định pháp luật. Phiên bản mới nhất luôn được đăng tải tại trang này và có hiệu lực kể từ thời điểm đăng tải.",
+      "Nhím có thể cập nhật, sửa đổi Điều khoản sử dụng này theo từng thời kỳ để phù hợp với thực tế vận hành và quy định pháp luật. Phiên bản mới nhất luôn được đăng tải tại trang này và có hiệu lực kể từ thời điểm đăng tải.",
       "Việc bạn tiếp tục sử dụng dịch vụ sau khi điều khoản được cập nhật đồng nghĩa với việc bạn chấp nhận các thay đổi đó.",
     ],
   },
   {
     title: "12. Liên hệ",
     body: [
-      "Nếu có bất kỳ thắc mắc nào về Điều khoản sử dụng, vui lòng liên hệ đội ngũ iviback qua hotline 0965.965.439 hoặc các kênh mạng xã hội chính thức tại chân trang website.",
+      "Nếu có bất kỳ thắc mắc nào về Điều khoản sử dụng, vui lòng liên hệ đội ngũ Nhím qua hotline 0898204657 hoặc các kênh mạng xã hội chính thức tại chân trang website.",
     ],
   },
 ];
@@ -131,14 +131,14 @@ export default function TermsOfUsePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <MarketingHeader activePath="/dieu-khoan-su-dung" />
 
-      <main className="pt-[80px]">
-        <section className="bg-gradient-to-b from-[#fff0e6] to-white py-3xl relative overflow-hidden">
+      <main className="pt-16 md:pt-[100px]">
+        <section className="bg-gradient-to-b from-[#fdebf2] to-white py-3xl relative overflow-hidden">
           <div className="max-w-[800px] mx-auto px-lg relative z-10 text-center">
             <h1 className="text-[36px] md:text-[48px] font-black text-ink tracking-tight mb-md">
               Điều Khoản <span className="text-primary">Sử Dụng</span>
             </h1>
             <p className="text-[16px] text-mute max-w-xl mx-auto leading-relaxed">
-              Cập nhật lần cuối: tháng 7/2026. Vui lòng đọc kỹ trước khi sử dụng dịch vụ hoàn tiền iviback.
+              Cập nhật lần cuối: tháng 7/2026. Vui lòng đọc kỹ trước khi sử dụng dịch vụ hoàn tiền Nhím.
             </p>
           </div>
         </section>

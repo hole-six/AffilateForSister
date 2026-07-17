@@ -40,7 +40,7 @@ function DealCard({ deal }: { deal: Deal }) {
   return (
     <div
       onClick={handleClick}
-      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100 hover:ring-[#e86a33]/20 active:scale-[0.98]"
+      className="group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/5 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-100 hover:ring-[#EC407A]/20 active:scale-[0.98]"
     >
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-gray-100">
@@ -52,7 +52,7 @@ function DealCard({ deal }: { deal: Deal }) {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
-            <Flame size={40} className="text-[#e86a33]/30" strokeWidth={1.5} />
+            <Flame size={40} className="text-[#EC407A]/30" strokeWidth={1.5} />
           </div>
         )}
 
@@ -73,8 +73,8 @@ function DealCard({ deal }: { deal: Deal }) {
 
         {/* Click overlay */}
         {clicked && (
-          <div className="absolute inset-0 bg-[#e86a33]/20 flex items-center justify-center animate-in fade-in zoom-in-95 duration-150">
-            <div className="rounded-full bg-white/90 px-md py-sm text-[13px] font-bold text-[#e86a33] shadow-lg">
+          <div className="absolute inset-0 bg-[#EC407A]/20 flex items-center justify-center animate-in fade-in zoom-in-95 duration-150">
+            <div className="rounded-full bg-white/90 px-md py-sm text-[13px] font-bold text-[#EC407A] shadow-lg">
               Đang mở Shopee... 🛒
             </div>
           </div>
@@ -101,7 +101,7 @@ function DealCard({ deal }: { deal: Deal }) {
               )}
             </div>
           ) : (
-            <span className="text-[13px] font-bold text-[#e86a33]">Xem giá trên Shopee</span>
+            <span className="text-[13px] font-bold text-[#EC407A]">Xem giá trên Shopee</span>
           )}
         </div>
 
@@ -137,7 +137,7 @@ export function DealGrid({ deals, totalPages, currentPage }: { deals: Deal[], to
 
       {/* Footer note */}
       <div className="mt-xl flex items-center justify-center gap-sm text-[12px] text-gray-400">
-        <Flame size={13} className="text-[#e86a33]" />
+        <Flame size={13} className="text-[#EC407A]" />
         <span>Bấm vào sản phẩm để mua trực tiếp trên Shopee và nhận hoàn tiền</span>
       </div>
     </div>

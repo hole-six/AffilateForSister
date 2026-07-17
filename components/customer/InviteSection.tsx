@@ -42,13 +42,13 @@ export function InviteSection({
     <div className="rounded-3xl bg-white p-xl shadow-sm ring-1 ring-black/[0.06] flex-1 min-w-0 overflow-hidden">
       {/* Header */}
       <div className="mb-md flex items-center gap-sm">
-        <img src="/heoquatang.png" alt="" className="h-9 w-9 object-contain" />
+        <img src="/nhimmagiamgia.png" alt="" className="h-9 w-9 object-contain" />
         <h2 className="text-[15px] font-bold text-gray-900">Giới thiệu bạn bè</h2>
       </div>
 
       <p className="text-[13px] text-gray-400 mb-md leading-relaxed">
         Mời bạn bè tham gia và nhận{" "}
-        <span className="font-bold text-[#e86a33]">{referralPercent}% hoa hồng</span> từ{" "}
+        <span className="font-bold text-[#EC407A]">{referralPercent}% hoa hồng</span> từ{" "}
         {maxReferralOrders} đơn hàng đầu tiên (tính chung cho tất cả bạn bè bạn mời)!
       </p>
 
@@ -79,7 +79,7 @@ export function InviteSection({
           className={`flex flex-1 items-center justify-center gap-xs rounded-2xl py-[10px] text-[13px] font-bold transition-all active:scale-[0.97] ${
             copied
               ? "bg-emerald-500 text-white shadow-md"
-              : "bg-[#e86a33] text-white shadow-md shadow-[#e86a33]/30 hover:bg-[#d65d2a]"
+              : "bg-[#EC407A] text-white shadow-md shadow-[#EC407A]/30 hover:bg-[#c2185b]"
           }`}
         >
           {copied ? (
@@ -98,7 +98,7 @@ export function InviteSection({
         {/* QR Code button */}
         <button
           onClick={() => setShowQR(true)}
-          className="flex items-center justify-center gap-xs rounded-2xl bg-orange-100 px-lg py-[10px] text-[13px] font-bold text-[#e86a33] hover:bg-orange-200 transition-all active:scale-[0.97]"
+          className="flex items-center justify-center gap-xs rounded-2xl bg-orange-100 px-lg py-[10px] text-[13px] font-bold text-[#EC407A] hover:bg-orange-200 transition-all active:scale-[0.97]"
           title="Xem mã QR"
         >
           <QrCode size={17} strokeWidth={2} />
@@ -124,7 +124,7 @@ export function InviteSection({
               className="relative overflow-hidden p-xl text-center"
               style={{
                 background:
-                  "linear-gradient(135deg, #fff3ee 0%, #fde8d8 100%)",
+                  "linear-gradient(135deg, #fdeef4 0%, #fdebf2 100%)",
               }}
             >
               <button
@@ -134,7 +134,7 @@ export function InviteSection({
                 <X size={16} strokeWidth={2.5} />
               </button>
               <img
-                src="/heoqua.png"
+                src="/nhimmagiamgia.png"
                 alt=""
                 className="mx-auto h-16 w-16 object-contain mb-sm"
               />
@@ -176,7 +176,7 @@ export function InviteSection({
                 className={`w-full flex items-center justify-center gap-sm rounded-2xl py-[11px] text-[14px] font-bold transition-all ${
                   copied
                     ? "bg-emerald-500 text-white"
-                    : "bg-[#e86a33] text-white hover:bg-[#d65d2a]"
+                    : "bg-[#EC407A] text-white hover:bg-[#c2185b]"
                 }`}
               >
                 {copied ? (
@@ -194,7 +194,7 @@ export function InviteSection({
 
               <p className="text-[11px] text-gray-400 text-center leading-relaxed">
                 ⭐ Bạn nhận{" "}
-                <span className="font-bold text-[#e86a33]">{referralPercent}% hoa hồng</span>{" "}
+                <span className="font-bold text-[#EC407A]">{referralPercent}% hoa hồng</span>{" "}
                 từ {maxReferralOrders} đơn đầu tiên, tính chung cho tất cả bạn bè bạn mời (trong {referralValidityMonths} tháng mỗi người)
               </p>
             </div>

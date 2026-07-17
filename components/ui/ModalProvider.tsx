@@ -68,7 +68,7 @@ export function ModalProvider({ children }: { children: ReactNode }) {
       case "warning":
         return <HelpCircle className="text-amber-500" size={32} strokeWidth={1.5} />;
       case "success":
-        return <img src="/heochaomung.png" alt="" className="h-14 w-14 object-contain" />;
+        return <img src="/nhimchaomung.png" alt="" className="h-14 w-14 object-contain" />;
       default:
         return <Info className="text-sky-500" size={32} strokeWidth={1.5} />;
     }

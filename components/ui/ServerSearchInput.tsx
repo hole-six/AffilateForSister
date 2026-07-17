@@ -33,7 +33,7 @@ export function ServerSearchInput({ placeholder = "Tìm kiếm...", className = 
         placeholder={placeholder}
         defaultValue={searchParams.get("q")?.toString()}
         onChange={(e) => handleSearch(e.target.value)}
-        className="h-10 w-full rounded-xl bg-gray-50 pl-10 pr-md text-[13px] font-medium text-gray-900 ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#e86a33]/50 transition-all"
+        className="h-10 w-full rounded-xl bg-gray-50 pl-10 pr-md text-[13px] font-medium text-gray-900 ring-1 ring-black/5 focus:outline-none focus:ring-2 focus:ring-[#EC407A]/50 transition-all"
       />
     </div>
   );

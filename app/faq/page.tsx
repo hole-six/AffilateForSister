@@ -4,16 +4,16 @@ import { MarketingFooter } from "@/components/marketing/MarketingFooter";
 import { FaqAccordion } from "@/components/marketing/FaqAccordion";
 
 export const metadata: Metadata = {
-  title: "Câu Hỏi Thường Gặp (FAQ) — iviback",
+  title: "Câu Hỏi Thường Gặp (FAQ) — Nhím",
   description: "Giải đáp các thắc mắc về hệ thống hoàn tiền thông minh: rút tiền, phí sử dụng, sàn hỗ trợ và liên kết Telegram.",
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "Câu Hỏi Thường Gặp (FAQ) — iviback",
+    title: "Câu Hỏi Thường Gặp (FAQ) — Nhím",
     description: "Giải đáp các thắc mắc về hệ thống hoàn tiền thông minh: rút tiền, phí sử dụng, sàn hỗ trợ và liên kết Telegram.",
     type: "website",
     locale: "vi_VN",
     url: "/faq",
-    siteName: "iviback",
+    siteName: "Nhím",
   },
 };
 
@@ -33,8 +33,8 @@ const FAQ_ITEMS = [
     answer: "Hoàn toàn miễn phí — không thu phí đăng ký, tạo link hay rút tiền.",
   },
   {
-    question: "Hệ thống hỗ trợ những sàn nào?",
-    answer: "Hiện tại hỗ trợ Shopee và TikTok Shop. Các sàn khác sẽ được bổ sung trong thời gian tới.",
+    question: "Hệ thống hỗ trợ sàn nào?",
+    answer: "Hiện tại hệ thống tập trung đối soát Shopee để đảm bảo hoàn tiền chính xác và nhanh nhất.",
   },
   {
     question: "Tôi có thể dùng Telegram thay vì vào web không?",
@@ -57,8 +57,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://iviback.vn/" },
-    { "@type": "ListItem", position: 2, name: "FAQ", item: "https://iviback.vn/faq" },
+    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://nhimhoahong.site/" },
+    { "@type": "ListItem", position: 2, name: "FAQ", item: "https://nhimhoahong.site/faq" },
   ],
 };
 
@@ -69,11 +69,11 @@ export default function FaqPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <MarketingHeader activePath="/faq" />
 
-      <main className="pt-[80px]">
+      <main className="pt-16 md:pt-[100px]">
         {/* Header Hero */}
-        <section className="bg-gradient-to-b from-[#fff0e6] to-white py-3xl relative overflow-hidden">
+        <section className="bg-gradient-to-b from-[#fdebf2] to-white py-3xl relative overflow-hidden">
           <div className="max-w-[1200px] mx-auto px-lg relative z-10 text-center">
-            <img src="/heoQA.png" alt="Câu hỏi thường gặp iviback" className="mx-auto h-24 w-24 object-contain mb-md" />
+            <img src="/nhimqa.png" alt="Câu hỏi thường gặp Nhím" className="mx-auto h-24 w-24 object-contain mb-md" />
             <h1 className="text-[40px] md:text-[56px] font-black text-ink tracking-tight mb-md">
               Câu Hỏi <span className="text-primary">Thường Gặp</span>
             </h1>

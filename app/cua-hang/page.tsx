@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import { MarketingHeader } from "@/components/marketing/MarketingHeader";
 import { MarketingFooter } from "@/components/marketing/MarketingFooter";
-import { ShopeeIcon, TiktokIcon } from "@/components/icons/PlatformIcons";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ShopeeIcon } from "@/components/icons/PlatformIcons";
+import { ArrowRight, Sparkles, Percent, Clock3, Tags, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
-  title: "Cửa Hàng — iviback | Nền Tảng Hỗ Trợ Hoàn Tiền",
-  description: "Danh sách sàn thương mại điện tử được iviback hỗ trợ hoàn tiền: Shopee, TikTok Shop và nhiều đối tác khác.",
+  title: "Đối Tác — Nhím | Nền Tảng Hỗ Trợ Hoàn Tiền",
+  description: "Nhím đồng hành cùng Shopee để mang lại hoàn tiền minh bạch cho mọi đơn hàng của bạn.",
   alternates: { canonical: "/cua-hang" },
   openGraph: {
-    title: "Cửa Hàng — iviback",
-    description: "Danh sách sàn thương mại điện tử được iviback hỗ trợ hoàn tiền: Shopee, TikTok Shop và nhiều đối tác khác.",
+    title: "Đối Tác — Nhím",
+    description: "Nhím đồng hành cùng Shopee để mang lại hoàn tiền minh bạch cho mọi đơn hàng của bạn.",
     type: "website",
     locale: "vi_VN",
     url: "/cua-hang",
-    siteName: "iviback",
+    siteName: "Nhím",
   },
 };
 
@@ -24,8 +24,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://iviback.vn/" },
-    { "@type": "ListItem", position: 2, name: "Cửa Hàng", item: "https://iviback.vn/cua-hang" },
+    { "@type": "ListItem", position: 1, name: "Trang chủ", item: "https://nhimhoahong.site/" },
+    { "@type": "ListItem", position: 2, name: "Cửa Hàng", item: "https://nhimhoahong.site/cua-hang" },
   ],
 };
 
@@ -41,72 +41,73 @@ export default async function CuaHangPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <MarketingHeader activePath="/cua-hang" />
 
-      <main className="pt-[80px]">
+      <main className="pt-16 md:pt-[100px]">
         {/* Header Hero */}
-        <section className="bg-gradient-to-b from-[#fff0e6] to-white py-3xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('/background.png')] bg-cover bg-center opacity-10 pointer-events-none" />
-          <div className="max-w-[1200px] mx-auto px-lg relative z-10 text-center">
-            <h1 className="text-[40px] md:text-[56px] font-black text-ink tracking-tight mb-md">
-              Hệ thống <span className="text-primary">Cửa hàng</span>
+        <section className="border-b border-primary/10 py-2xl">
+          <div className="max-w-[1200px] mx-auto px-lg">
+            <p className="text-[12px] font-bold uppercase tracking-[0.15em] text-primary mb-sm">Đối tác chính thức</p>
+            <h1 className="text-[34px] md:text-[46px] font-black text-ink tracking-tight max-w-2xl">
+              Một sàn, hoàn tiền hết mình
             </h1>
-            <p className="text-[18px] text-mute max-w-2xl mx-auto leading-relaxed">
-              Mua sắm thả ga, nhận hoàn tiền tối đa từ những đối tác lớn nhất. Chúng tôi luôn mở rộng hệ thống để mang lại lợi ích tốt nhất cho bạn.
+            <p className="text-[16px] text-mute max-w-xl leading-relaxed mt-sm">
+              Nhím tập trung vào Shopee để đối soát chính xác và hoàn tiền nhanh nhất, thay vì dàn trải nhiều sàn.
             </p>
           </div>
         </section>
 
-        {/* Stores Grid */}
-        <section className="py-3xl max-w-[1200px] mx-auto px-lg">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2xl">
-            
-            {/* Shopee */}
-            <div className="group relative bg-white rounded-[40px] p-2xl border border-primary/10 shadow-lg shadow-primary/5 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full">
-              <div className="absolute -right-10 -top-10 w-[200px] h-[200px] bg-[#ee4d2d]/10 rounded-full blur-3xl group-hover:bg-[#ee4d2d]/20 transition-all pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-white rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center mb-xl">
-                  <ShopeeIcon size={56} />
+        {/* Partner spotlight */}
+        <section className="py-2xl max-w-[1200px] mx-auto px-lg">
+          <div className="rounded-[12px] border border-primary/10 bg-white shadow-sm overflow-hidden md:grid md:grid-cols-[280px_1fr]">
+            {/* Left: brand */}
+            <div className="flex flex-col items-center justify-center gap-md p-2xl bg-canvas-soft border-b md:border-b-0 md:border-r border-primary/10">
+              <div className="w-20 h-20 bg-white rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center">
+                <ShopeeIcon size={44} />
+              </div>
+              <h2 className="text-[22px] font-black text-ink">Shopee</h2>
+              <p className="text-mute text-[14px] text-center leading-relaxed">
+                Sàn TMĐT lớn nhất mà Nhím đối soát trực tiếp.
+              </p>
+            </div>
+
+            {/* Right: detail grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-primary/10">
+              <div className="bg-white p-xl flex items-start gap-md">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#ee4d2d]/10 text-[#ee4d2d]">
+                  <Percent size={18} strokeWidth={2.5} />
                 </div>
-                <h2 className="text-[28px] font-black text-ink mb-sm">Shopee</h2>
-                <p className="text-mute text-[16px] leading-relaxed mb-xl">
-                  Nhận hoàn tiền cực khủng khi mua sắm qua Shopee. Từ hàng thời trang, mỹ phẩm đến đồ điện tử, mọi đơn hàng đều được đối soát và hoàn tiền minh bạch.
-                </p>
-                <div className="flex flex-col gap-sm w-full max-w-[200px]">
-                  <div className="bg-canvas-soft text-ink font-bold py-2 px-4 rounded-xl border border-gray-100 flex justify-between items-center">
-                    <span>Hoàn tiền tối đa</span>
-                    <span className="text-[#ee4d2d]">{customerRate}%</span>
-                  </div>
-                  <div className="bg-canvas-soft text-ink font-bold py-2 px-4 rounded-xl border border-gray-100 flex justify-between items-center">
-                    <span>Thời gian duyệt</span>
-                    <span>15-30 ngày</span>
-                  </div>
+                <div>
+                  <div className="text-[12px] font-bold text-mute uppercase tracking-wide">Hoàn tiền tối đa</div>
+                  <div className="text-[22px] font-black text-ink">{customerRate}%</div>
+                </div>
+              </div>
+              <div className="bg-white p-xl flex items-start gap-md">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                  <Clock3 size={18} strokeWidth={2.5} />
+                </div>
+                <div>
+                  <div className="text-[12px] font-bold text-mute uppercase tracking-wide">Thời gian duyệt</div>
+                  <div className="text-[22px] font-black text-ink">15-30 ngày</div>
+                </div>
+              </div>
+              <div className="bg-white p-xl flex items-start gap-md">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-amber-100 text-amber-600">
+                  <Tags size={18} strokeWidth={2.5} />
+                </div>
+                <div>
+                  <div className="text-[12px] font-bold text-mute uppercase tracking-wide">Ngành hàng</div>
+                  <div className="text-[15px] font-bold text-ink leading-snug">Thời trang, mỹ phẩm, điện tử &amp; hơn thế</div>
+                </div>
+              </div>
+              <div className="bg-white p-xl flex items-start gap-md">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                  <ShieldCheck size={18} strokeWidth={2.5} />
+                </div>
+                <div>
+                  <div className="text-[12px] font-bold text-mute uppercase tracking-wide">Đối soát</div>
+                  <div className="text-[15px] font-bold text-ink leading-snug">Minh bạch, tự động theo từng đơn</div>
                 </div>
               </div>
             </div>
-
-            {/* TikTok Shop */}
-            <div className="group relative bg-white rounded-[40px] p-2xl border border-primary/10 shadow-lg shadow-primary/5 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between overflow-hidden h-full">
-              <div className="absolute -left-10 -top-10 w-[200px] h-[200px] bg-[#000000]/5 rounded-full blur-3xl group-hover:bg-[#000000]/10 transition-all pointer-events-none" />
-              <div className="relative z-10 flex flex-col items-center text-center">
-                <div className="w-24 h-24 bg-white rounded-3xl shadow-sm border border-gray-100 flex items-center justify-center mb-xl text-black">
-                  <TiktokIcon size={56} />
-                </div>
-                <h2 className="text-[28px] font-black text-ink mb-sm">TikTok Shop</h2>
-                <p className="text-mute text-[16px] leading-relaxed mb-xl">
-                  Bắt kịp xu hướng và tận hưởng niềm vui mua sắm giải trí trên TikTok Shop, kèm theo mức hoa hồng affiliate vô cùng hấp dẫn chuyển thẳng vào ví của bạn.
-                </p>
-                <div className="flex flex-col gap-sm w-full max-w-[200px]">
-                  <div className="bg-canvas-soft text-ink font-bold py-2 px-4 rounded-xl border border-gray-100 flex justify-between items-center">
-                    <span>Hoàn tiền tối đa</span>
-                    <span className="text-primary">{customerRate}%</span>
-                  </div>
-                  <div className="bg-canvas-soft text-ink font-bold py-2 px-4 rounded-xl border border-gray-100 flex justify-between items-center">
-                    <span>Thời gian duyệt</span>
-                    <span>15-30 ngày</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </section>
 

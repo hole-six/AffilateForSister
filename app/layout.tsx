@@ -12,14 +12,14 @@ const beVietnamPro = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://iviback.vn"),
-  title: "iviback",
+  metadataBase: new URL("https://nhimhoahong.site"),
+  title: "Nhím",
   description: "Nền tảng affiliate hoàn tiền tích hợp Web + Zalo",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "iviback",
+    title: "Nhím",
   },
   icons: {
     icon: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e86a33",
+  themeColor: "#EC407A",
   width: "device-width",
   initialScale: 1,
 };

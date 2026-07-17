@@ -9,7 +9,7 @@ const variantClasses: Record<Variant, string> = {
   secondary:
     "bg-primary-pale text-primary hover:bg-primary-neutral active:bg-primary-neutral focus-visible:ring-primary-pale",
   tertiary:
-    "bg-canvas text-mute border border-ink/10 hover:border-primary hover:text-primary active:bg-canvas-soft focus-visible:ring-ink/20",
+    "bg-transparent text-mute border-0 border-b-2 border-ink/15 rounded-b-none hover:border-primary hover:text-primary active:bg-canvas-soft focus-visible:ring-ink/20",
   danger:
     "bg-negative/10 text-negative hover:bg-negative/20 active:bg-negative/30 focus-visible:ring-negative/30",
 };
@@ -30,7 +30,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        className={`inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.97] ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+        className={`inline-flex items-center justify-center font-bold rounded-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 active:scale-[0.98] active:translate-y-[1px] ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
         {...props}
       />
     );

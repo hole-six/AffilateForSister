@@ -15,7 +15,7 @@ export default async function AdminZaloPage() {
   return (
     <div className="flex flex-col gap-2xl">
       <div className="flex items-center gap-md">
-        <img src="/heothongbao.png" alt="" className="h-12 w-12 shrink-0 object-contain" />
+        <img src="/nhimthongbao.png" alt="" className="h-12 w-12 shrink-0 object-contain" />
         <div>
         <h1 className="display-sm">Tích hợp Zalo OA</h1>
         <p className="mt-xs text-body">

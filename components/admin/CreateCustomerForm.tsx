@@ -48,7 +48,7 @@ export function CreateCustomerForm() {
 
   if (!open) {
     return (
-      <Button variant="primary" onClick={() => setOpen(true)} className="shadow-sm shadow-[#e86a33]/20">
+      <Button variant="primary" onClick={() => setOpen(true)} className="shadow-sm shadow-[#EC407A]/20">
         <Plus size={18} strokeWidth={2} className="mr-1" />
         Thêm khách hàng
       </Button>
@@ -59,7 +59,7 @@ export function CreateCustomerForm() {
     <Card className="border border-gray-100 bg-white/50 backdrop-blur-md shadow-sm mb-lg">
       <div className="mb-lg flex items-center justify-between border-b border-gray-100 pb-md">
         <div className="flex items-center gap-sm">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#e86a33]/10 text-[#e86a33]">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EC407A]/10 text-[#EC407A]">
             <Users size={16} strokeWidth={2} />
           </div>
           <h3 className="text-[16px] font-bold text-gray-900">Thêm khách hàng mới</h3>

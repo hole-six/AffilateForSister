@@ -25,7 +25,7 @@ export function PublicFloatingSupport() {
           title="Liên hệ hỗ trợ"
           className="flex h-14 w-14 items-center justify-center rounded-full bg-white shadow-lg ring-1 ring-black/5 transition-transform hover:scale-105 active:scale-95"
         >
-          <Headphones size={24} strokeWidth={2.25} className="text-[#e86a33]" />
+          <Headphones size={24} strokeWidth={2.25} className="text-[#EC407A]" />
         </button>
       </div>
 
@@ -43,13 +43,13 @@ export function PublicFloatingSupport() {
             >
               <div
                 className="sticky top-0 z-10 flex items-center justify-between px-xl py-lg border-b border-gray-100 bg-white rounded-t-3xl"
-                style={{ background: "linear-gradient(135deg,#fff3ee,#fde8d8)" }}
+                style={{ background: "linear-gradient(135deg,#fdeef4,#fdebf2)" }}
               >
                 <div className="flex items-center gap-sm">
-                  <img src="/heoQA.png" alt="Hỗ trợ khách hàng iviback" className="h-10 w-10 object-contain" />
+                  <img src="/nhimqa.png" alt="Hỗ trợ khách hàng Nhím" className="h-10 w-10 object-contain" />
                   <div>
                     <h3 className="text-[16px] font-black text-gray-900">Hỗ trợ nhanh</h3>
-                    <p className="text-[12px] text-gray-500">Liên hệ với Ví Heo qua các kênh dưới đây</p>
+                    <p className="text-[12px] text-gray-500">Liên hệ với Ví Nhím qua các kênh dưới đây</p>
                   </div>
                 </div>
                 <button

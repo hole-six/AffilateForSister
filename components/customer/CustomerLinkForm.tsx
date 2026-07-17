@@ -2,11 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Store, Check, Copy, ExternalLink, Link2, Plus, Package, Sparkles, Wallet } from "lucide-react";
+import { Check, Copy, ExternalLink, Link2, Plus, Package, Sparkles, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { TextInput } from "@/components/ui/TextInput";
 import { Card } from "@/components/ui/Card";
-import { ShopeeIcon, TiktokIcon } from "@/components/icons/PlatformIcons";
 import { formatCurrency } from "@/lib/format";
 
 type Option = { id: string; code: string; label: string };
@@ -21,14 +20,13 @@ type LinkResult = {
   estimatedCashback: number | string | null;
 };
 
-// Brand icons render their own colors, so the wrapper skips tinting for them.
-const PLATFORM_STYLE: Record<string, { icon: typeof ShopeeIcon; color: string; branded: boolean }> = {
-  SHOPEE: { icon: ShopeeIcon, color: "#ee4d2d", branded: true },
-  TIKTOK: { icon: TiktokIcon, color: "#000000", branded: true },
+// Icon nhím túi hồng thay cho logo cam của Shopee để giữ giao diện đồng bộ thương hiệu.
+const PLATFORM_STYLE: Record<string, { mascot: string }> = {
+  SHOPEE: { mascot: "/nhimgiohang.png" },
 };
 
 function platformStyle(code: string) {
-  return PLATFORM_STYLE[code.toUpperCase()] ?? { icon: Store, color: "#454745", branded: false };
+  return PLATFORM_STYLE[code.toUpperCase()] ?? { mascot: "/nhimchaomung.png" };
 }
 
 export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
@@ -98,7 +96,7 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
       {/* Platform selection (1 Chọn nền tảng) */}
       <div>
         <div className="mb-md flex items-center gap-sm">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e86a33] text-[12px] font-bold text-white shadow-sm">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EC407A] text-[12px] font-bold text-white shadow-sm">
             1
           </span>
           <span className="text-[15px] font-bold text-gray-900">Chọn nền tảng</span>
@@ -106,40 +104,38 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
         
         <div className="flex flex-wrap gap-md">
           {platforms.map((p) => {
-            const style = platformStyle(p.code);
-            const Icon = style.icon;
             const active = p.id === platformId;
-            const isTiktok = p.code.toUpperCase() === "TIKTOK";
             return (
-              <div key={p.id} className="relative">
-                <button
-                  type="button"
-                  onClick={() => !isTiktok && setPlatformId(p.id)}
-                  disabled={isTiktok}
-                  className={`group flex h-[88px] w-[100px] flex-col items-center justify-center gap-xs rounded-2xl border transition-all duration-200 ${
-                    isTiktok
-                      ? "border-gray-100 bg-gray-50 opacity-40 cursor-not-allowed"
-                      : active
-                      ? "border-[#e86a33] bg-white shadow-[0_4px_12px_rgba(232,106,51,0.15)] scale-105"
-                      : "border-gray-100 bg-white hover:border-gray-300 hover:bg-gray-50 hover:-translate-y-1 hover:shadow-sm"
-                  }`}
-                >
-                  <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-xl transition-transform duration-200 ${active && !isTiktok ? "scale-110" : "group-hover:scale-110"}`}
-                    style={{ color: style.color, backgroundColor: `${style.color}15` }}
-                  >
-                    <Icon size={22} />
-                  </div>
-                  <span className={`text-[12px] font-bold ${active && !isTiktok ? "text-gray-900" : "text-gray-500"}`}>
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => setPlatformId(p.id)}
+                className={`group flex items-center gap-md rounded-2xl border-2 px-lg py-md transition-all duration-200 ${
+                  active
+                    ? "border-primary bg-primary/5 shadow-md shadow-primary/15"
+                    : "border-ink/8 bg-white hover:border-primary/30 hover:bg-primary/[0.03] hover:-translate-y-0.5 hover:shadow-sm"
+                }`}
+              >
+                {/* Icon nhím thay cho logo Shopee, giữ đồng bộ thương hiệu */}
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all ${
+                  active ? "bg-primary shadow-sm shadow-primary/30" : "bg-primary/10 group-hover:bg-primary/20"
+                }`}>
+                  <img src={platformStyle(p.code).mascot} alt="" className="h-7 w-7 object-contain" />
+                </div>
+                <div className="text-left">
+                  <div className={`text-[14px] font-black leading-tight ${active ? "text-primary" : "text-ink"}`}>
                     {p.label}
-                  </span>
-                </button>
-                {isTiktok && (
-                  <span className="absolute -top-1 -right-1 rounded-full bg-gray-400 px-[5px] py-[1px] text-[9px] font-bold text-white leading-tight">
-                    Tạm tắt
-                  </span>
+                  </div>
+                  <div className="text-[11px] text-mute font-medium">Hoàn tiền tự động</div>
+                </div>
+                {active && (
+                  <div className="ml-sm flex h-5 w-5 items-center justify-center rounded-full bg-primary">
+                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                      <path d="M2 5l2.5 2.5L8 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                 )}
-              </div>
+              </button>
             );
           })}
         </div>
@@ -148,7 +144,7 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
       {/* Input area (2 Dán link) */}
       <div className="rounded-2xl bg-white p-lg shadow-sm ring-1 ring-black/5">
         <div className="mb-md flex items-center gap-sm">
-          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#e86a33] text-[12px] font-bold text-white shadow-sm">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#EC407A] text-[12px] font-bold text-white shadow-sm">
             2
           </span>
           <span className="text-[14px] font-bold text-gray-900">
@@ -156,48 +152,43 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
           </span>
         </div>
         <form onSubmit={handleSubmit} className="flex flex-col gap-md">
-          <div className="flex flex-col gap-md sm:flex-row sm:items-end">
-            <div className="flex-1">
+          {/* Link + giá trên cùng 1 hàng, 2 cột */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
+            <div className="flex flex-col gap-xs">
+              <label className="text-[12px] font-bold text-gray-500 uppercase tracking-wider">Link sản phẩm</label>
               <TextInput
-                placeholder={`Dán link ${selectedPlatform?.label ?? "sản phẩm"} muốn hoàn tiền vào đây...`}
+                placeholder={`Dán link ${selectedPlatform?.label ?? "sản phẩm"}...`}
                 required
                 value={originalUrl}
                 onChange={(e) => setOriginalUrl(e.target.value)}
-                className="h-12 bg-gray-50 border-gray-200 focus:border-[#e86a33] focus:ring-[#e86a33]/20"
+                className="h-12 bg-gray-50 border-gray-200 focus:border-[#EC407A] focus:ring-[#EC407A]/20"
               />
             </div>
-          </div>
 
-          {/* Ô nhập giá — nổi bật riêng để user không bỏ qua */}
-          <div className="flex items-center gap-md rounded-xl bg-amber-50 border border-amber-200 px-md py-sm">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-amber-100">
-              <Wallet size={15} className="text-amber-600" strokeWidth={2.5} />
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-[12px] font-bold text-amber-800 mb-[3px]">Nhập giá để xem hoàn tiền ước tính</p>
+            <div className="flex flex-col gap-xs">
+              <label className="text-[12px] font-bold text-amber-600 uppercase tracking-wider flex items-center gap-xs">
+                <Wallet size={12} strokeWidth={2.5} />
+                Giá sản phẩm (ước tính hoàn tiền)
+              </label>
               <input
                 type="number"
                 min={0}
                 placeholder="VD: 183000"
                 value={productPrice}
                 onChange={(e) => setProductPrice(e.target.value)}
-                className="w-full bg-white rounded-lg border border-amber-200 px-sm py-[6px] text-[14px] font-bold text-gray-900 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/30 placeholder:font-normal placeholder:text-gray-400"
+                className="h-12 w-full rounded-xl bg-amber-50 border border-amber-200 px-md text-[14px] font-bold text-gray-900 focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 placeholder:font-normal placeholder:text-gray-400"
               />
             </div>
-            {productPrice && Number(productPrice) > 0 && (
-              <div className="shrink-0 text-right">
-                <p className="text-[10px] text-amber-600 font-medium">Giá nhập</p>
-                <p className="text-[14px] font-black text-amber-800">{formatCurrency(Number(productPrice))}</p>
-              </div>
-            )}
           </div>
-          <p className="text-[11px] text-gray-400 -mt-xs">
-            Shopee không cho phép lấy giá tự động — nhập giá sản phẩm để xem ước tính số tiền sẽ được hoàn.
+
+          <p className="text-[11px] text-gray-400">
+            Shopee không cho phép lấy giá tự động — nhập giá để xem ước tính số tiền hoàn.
           </p>
+
           <Button
             type="submit"
             disabled={loading || !platformId}
-            className="h-12 w-fit bg-[#e86a33] text-white hover:bg-[#d65d2a] hover:shadow-md hover:shadow-[#e86a33]/30 active:bg-[#c25324] focus-visible:ring-[#e86a33]"
+            className="h-12 w-fit bg-[#EC407A] text-white hover:bg-[#c2185b] hover:shadow-md hover:shadow-[#EC407A]/30 active:bg-[#a01352] focus-visible:ring-[#EC407A]"
           >
             {loading ? "Đang tạo..." : (
               <>
@@ -229,7 +220,7 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
                     className="h-full w-full object-cover"
                   />
                 ) : (
-                  <Link2 size={24} strokeWidth={1.5} className="text-[#e86a33]" />
+                  <Link2 size={24} strokeWidth={1.5} className="text-[#EC407A]" />
                 )}
               </div>
               <div className="min-w-0 flex-1">
@@ -237,7 +228,7 @@ export function CustomerLinkForm({ platforms }: { platforms: Option[] }) {
                   {result.productTitle ?? "Sản phẩm mua sắm"}
                 </p>
                 <div className="mt-xs flex items-center gap-xs flex-wrap">
-                  <span className="rounded-md bg-[#e86a33]/10 px-sm py-[2px] text-[11px] font-bold text-[#e86a33]">
+                  <span className="rounded-md bg-[#EC407A]/10 px-sm py-[2px] text-[11px] font-bold text-[#EC407A]">
                     {selectedPlatform?.label ?? "Sản phẩm"}
                   </span>
                   <span className="font-mono text-[11px] text-gray-400 truncate">{result.trackingCode}</span>

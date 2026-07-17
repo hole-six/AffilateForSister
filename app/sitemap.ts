@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://iviback.vn";
+const BASE_URL = "https://nhimhoahong.site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
