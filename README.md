@@ -24,7 +24,7 @@ Mở http://localhost:3000
 
 | Vai trò | Email | Mật khẩu |
 |---|---|---|
-| Admin | admin@demo.vn | Demo@123 |
+| Admin | nhim@admin.vn | nhim123 |
 | Khách hàng | khach@demo.vn | Demo@123 |
 
 ## Biến môi trường (`.env`)

@@ -8,13 +8,14 @@ const prisma = new PrismaClient();
 
 async function main() {
   const passwordHash = bcrypt.hashSync("Demo@123", 10);
+  const adminPasswordHash = bcrypt.hashSync("nhim123", 10);
 
   const admin = await prisma.user.upsert({
-    where: { email: "admin@demo.vn" },
+    where: { email: "nhim@admin.vn" },
     update: {},
     create: {
-      email: "admin@demo.vn",
-      passwordHash,
+      email: "nhim@admin.vn",
+      passwordHash: adminPasswordHash,
       fullName: "Quản trị viên",
       role: "admin",
     },
@@ -189,7 +190,7 @@ async function main() {
   });
 
   console.log("Seed hoàn tất.");
-  console.log("Đăng nhập admin: admin@demo.vn / Demo@123");
+  console.log("Đăng nhập admin: nhim@admin.vn / nhim123");
   console.log("Đăng nhập khách: khach@demo.vn / Demo@123");
 }
 

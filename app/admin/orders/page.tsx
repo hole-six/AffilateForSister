@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { Button } from "@/components/ui/Button";
 import { AdminOrdersClient } from "@/components/admin/AdminOrdersClient";
+import { DeleteAllOrdersButton } from "@/components/admin/DeleteAllOrdersButton";
 import { Upload, Package, Wallet, Clock, TriangleAlert } from "lucide-react";
 import { formatCurrency } from "@/lib/format";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -94,12 +95,15 @@ export default async function AdminOrdersPage({ searchParams }: { searchParams: 
           { label: "Công nợ:", value: formatCurrency(sums.moneyInTotal) },
         ]}
         action={
-          <Link href="/admin/orders/import">
-            <Button variant="primary" size="md">
-              <Upload size={16} strokeWidth={2} />
-              Import đối soát
-            </Button>
-          </Link>
+          <>
+            <DeleteAllOrdersButton />
+            <Link href="/admin/orders/import">
+              <Button variant="primary" size="md">
+                <Upload size={16} strokeWidth={2} />
+                Import đối soát
+              </Button>
+            </Link>
+          </>
         }
       />
 
