@@ -3,6 +3,7 @@ import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { formatCurrency, formatDate } from "@/lib/format";
 import { CustomerWalletClient } from "@/components/customer/CustomerWalletClient";
+import { isWithdrawEligible } from "@/lib/withdrawEligibility";
 
 export default async function CustomerWalletPage({ searchParams }: { searchParams: { page?: string; q?: string } }) {
   const session = await getSession();
@@ -39,7 +40,7 @@ export default async function CustomerWalletPage({ searchParams }: { searchParam
   if (!customer) redirect("/login");
 
   const available = orders
-    .filter((o) => o.orderStatus === "approved" && o.payoutStatus === "unpaid")
+    .filter((o) => isWithdrawEligible(o))
     .reduce((s, o) => s + Number(o.customerRewardAmount), 0);
   const processing = orders
     .filter((o) => o.payoutStatus === "processing")

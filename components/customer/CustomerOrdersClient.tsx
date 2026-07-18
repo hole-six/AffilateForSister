@@ -5,6 +5,7 @@ import { Pagination } from "@/components/ui/Pagination";
 import { ServerSearchInput } from "@/components/ui/ServerSearchInput";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { isWithdrawEligible, WITHDRAW_HOLD_DAYS, daysUntilWithdrawEligible } from "@/lib/withdrawEligibility";
 
 type Order = {
   id: string;
@@ -15,6 +16,7 @@ type Order = {
   customerRewardAmount: string;
   orderStatus: string;
   payoutStatus: string;
+  completedAt: string | null;
 };
 
 type Props = {
@@ -48,14 +50,26 @@ export function CustomerOrdersClient({ orders, totalPages, currentPage, counts }
     if (order.orderStatus === "approved" && order.payoutStatus === "paid") {
       return <span className="inline-flex rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-bold text-emerald-600">Hoàn thành</span>;
     }
-    if (order.orderStatus === "approved" && order.payoutStatus !== "paid") {
+    if (order.orderStatus === "approved" && order.payoutStatus === "processing") {
       return <span className="inline-flex rounded-md bg-[#fdebf2] px-2 py-1 text-[11px] font-bold text-[#EC407A]">Đang xử lý</span>;
+    }
+    if (order.orderStatus === "approved" && order.payoutStatus === "unpaid") {
+      if (isWithdrawEligible(order)) {
+        return <span className="inline-flex rounded-md bg-violet-50 px-2 py-1 text-[11px] font-bold text-violet-600">Sẵn sàng rút</span>;
+      }
+      return <span className="inline-flex rounded-md bg-sky-50 px-2 py-1 text-[11px] font-bold text-sky-600">Đang đối soát</span>;
     }
     return <span className="inline-flex rounded-md bg-amber-50 px-2 py-1 text-[11px] font-bold text-amber-600">Chờ xác nhận</span>;
   };
 
   const getStatusHint = (order: Order) => {
     if (order.orderStatus === "cancelled" || order.orderStatus === "rejected") return null;
+    if (order.orderStatus === "approved" && order.payoutStatus === "unpaid" && !isWithdrawEligible(order)) {
+      const days = daysUntilWithdrawEligible(order);
+      return days
+        ? `Đơn cần đối soát ${WITHDRAW_HOLD_DAYS} ngày kể từ ngày hoàn thành trước khi rút được — còn ${days} ngày.`
+        : `Đơn cần đối soát ${WITHDRAW_HOLD_DAYS} ngày kể từ ngày hoàn thành trước khi rút được.`;
+    }
     if (order.orderStatus === "approved") return null;
     return "Shopee chưa xác nhận hoàn thành đơn — tiền hoàn chỉ về sau khi đơn được xác nhận, chưa chắc chắn nhận được.";
   };

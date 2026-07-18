@@ -34,6 +34,7 @@ export async function sendMail(params: {
   if (!transporter || !fromAddress) {
     // Chưa cấu hình SMTP — không throw, chỉ báo simulated để không làm hỏng
     // luồng chính (giống pattern notifyCustomerTelegram best-effort).
+    console.error(`[mailer] Bỏ qua gửi mail tới ${params.to} — SMTP chưa được cấu hình.`);
     return { ok: true, simulated: true, error: "SMTP chưa được cấu hình" };
   }
 
@@ -46,11 +47,12 @@ export async function sendMail(params: {
     });
     return { ok: true, simulated: false };
   } catch (error) {
-    return {
-      ok: false,
-      simulated: false,
-      error: error instanceof Error ? error.message : "Unknown error",
-    };
+    // Các lời gọi sendMail() ở nơi khác dùng "void sendMail(...)" không chờ
+    // kết quả, nên nếu không log ở đây thì lỗi gửi mail sẽ biến mất hoàn
+    // toàn — không ai biết mail đã không gửi được, kể cả xem log server.
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error(`[mailer] Gửi mail tới ${params.to} thất bại: ${message}`);
+    return { ok: false, simulated: false, error: message };
   }
 }
 

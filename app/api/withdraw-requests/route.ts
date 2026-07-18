@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/auth";
 import { sendMail, buildAdminWithdrawRequestEmail, buildCustomerWithdrawRequestEmail } from "@/lib/mailer";
+import { isWithdrawEligible } from "@/lib/withdrawEligibility";
 
 const MIN_WITHDRAW_AMOUNT = 10000;
 
@@ -20,7 +21,7 @@ export async function POST(_req: NextRequest) {
   }
 
   const available = customer.orders
-    .filter((o) => o.orderStatus === "approved" && o.payoutStatus === "unpaid")
+    .filter((o) => isWithdrawEligible(o))
     .reduce((s, o) => s + Number(o.customerRewardAmount), 0);
 
   if (available < MIN_WITHDRAW_AMOUNT) {

@@ -18,6 +18,8 @@ import { prisma } from "@/lib/prisma";
 import { formatCurrency, formatDate } from "@/lib/format";
 import { InviteSection } from "@/components/customer/InviteSection";
 import { StatCard } from "@/components/ui/StatCard";
+import { isWithdrawEligible, isWithdrawClearing, daysUntilWithdrawEligible } from "@/lib/withdrawEligibility";
+import { CompletePhoneModal } from "@/components/customer/CompletePhoneModal";
 
 const PLATFORM_STYLE: Record<string, { color: string }> = {
   SHOPEE: { color: "#ee4d2d" },
@@ -41,6 +43,11 @@ const STATUS_CONFIG = {
     icon: Sparkles,
     cls: "bg-violet-100 text-violet-700",
   },
+  clearing: {
+    label: "Đang đối soát",
+    icon: Clock,
+    cls: "bg-sky-100 text-sky-700",
+  },
   pending: {
     label: "Chờ duyệt",
     icon: Clock,
@@ -48,10 +55,10 @@ const STATUS_CONFIG = {
   },
 } as const;
 
-function getStatusKey(order: { orderStatus: string; payoutStatus: string }) {
+function getStatusKey(order: { orderStatus: string; payoutStatus: string; completedAt: Date | string | null }) {
   if (order.payoutStatus === "paid") return "paid";
   if (order.payoutStatus === "processing") return "processing";
-  if (order.orderStatus === "approved") return "approved";
+  if (order.orderStatus === "approved") return isWithdrawEligible(order) ? "approved" : "clearing";
   return "pending";
 }
 
@@ -81,10 +88,10 @@ export default async function CustomerHomePage() {
   const allOrders = customer?.orders ?? [];
   const totalIncome = allOrders.reduce((s, o) => s + Number(o.customerRewardAmount), 0);
   const pendingIncome = allOrders
-    .filter((o) => o.orderStatus === "pending")
+    .filter((o) => o.orderStatus === "pending" || isWithdrawClearing(o))
     .reduce((s, o) => s + Number(o.customerRewardAmount), 0);
   const availableBalance = allOrders
-    .filter((o) => o.orderStatus === "approved" && o.payoutStatus === "unpaid")
+    .filter((o) => isWithdrawEligible(o))
     .reduce((s, o) => s + Number(o.customerRewardAmount), 0);
   const paidTotal = allOrders
     .filter((o) => o.payoutStatus === "paid")
@@ -108,6 +115,7 @@ export default async function CustomerHomePage() {
 
   return (
     <div className="flex flex-col gap-xl fade-in">
+      {customer && !customer.phone && <CompletePhoneModal />}
 
       {/* ══ HERO BANNER ══ */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary via-[#e91e8c] to-primary-active px-xl py-2xl shadow-xl shadow-primary/20 min-h-[160px]">
@@ -225,7 +233,9 @@ export default async function CustomerHomePage() {
                       </span>
                       <span className={`inline-flex items-center gap-[3px] text-[10px] font-bold px-xs py-[2px] rounded-full whitespace-nowrap ${statusCfg.cls}`}>
                         <StatusIcon size={9} strokeWidth={2.5} />
-                        {statusCfg.label}
+                        {statusKey === "clearing" && daysUntilWithdrawEligible(order)
+                          ? `${statusCfg.label} · còn ${daysUntilWithdrawEligible(order)}d`
+                          : statusCfg.label}
                       </span>
                     </div>
                   </li>

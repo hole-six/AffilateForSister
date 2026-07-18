@@ -51,6 +51,7 @@ export default async function CustomerOrdersPage({ searchParams }: { searchParam
     customerRewardAmount: formatCurrency(Number(o.customerRewardAmount)),
     orderStatus: o.orderStatus,
     payoutStatus: o.payoutStatus,
+    completedAt: o.completedAt ? o.completedAt.toISOString() : null,
   }));
 
   const totalPages = Math.ceil(filteredCount / limit);
