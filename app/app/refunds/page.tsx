@@ -9,8 +9,10 @@ import {
   ShieldCheck,
   Zap,
   MousePointerClick,
-  XCircle,
-  Layers,
+  ShoppingCart,
+  VideoOff,
+  LogOut,
+  Store,
 } from "lucide-react";
 
 export default async function CustomerRefundsPage({
@@ -55,37 +57,54 @@ export default async function CustomerRefundsPage({
 
   const NOTES = [
     {
-      icon: XCircle,
+      icon: ShoppingCart,
       color: "text-rose-500",
       bg: "bg-rose-50",
       text: (
         <>
-          <strong className="text-ink">Xoá sản phẩm</strong> tương tự đã có trong giỏ hàng trước khi bấm link.
+          <strong className="text-rose-600">Xoá giỏ hàng</strong> sản phẩm cần mua trước khi nhấp vào link chuyển đổi.
+        </>
+      ),
+    },
+    {
+      icon: VideoOff,
+      color: "text-amber-500",
+      bg: "bg-amber-50",
+      text: (
+        <>
+          <strong className="text-amber-600">Không xem video hay livestream</strong> sau khi đã nhấp vào link chuyển đổi.
+        </>
+      ),
+    },
+    {
+      icon: LogOut,
+      color: "text-blue-500",
+      bg: "bg-blue-50",
+      text: (
+        <>
+          <strong className="text-blue-600">Thoát hẳn ứng dụng</strong> (không chỉ ẩn) trước và sau khi đặt đơn.
+        </>
+      ),
+    },
+    {
+      icon: Store,
+      color: "text-emerald-500",
+      bg: "bg-emerald-50",
+      text: (
+        <>
+          Mỗi lần chỉ đặt <strong className="text-emerald-600">1 shop duy nhất</strong> — không gộp nhiều shop khác nhau trong 1 lần thanh toán.
         </>
       ),
     },
     {
       icon: MousePointerClick,
-      color: "text-amber-500",
-      bg: "bg-amber-50",
-      text: "Không bấm link khác (live, quảng cáo) trong khi đang mua hàng.",
-    },
-    {
-      icon: Layers,
-      color: "text-blue-500",
-      bg: "bg-blue-50",
+      color: "text-primary",
+      bg: "bg-primary-neutral",
       text: (
         <>
-          Hoàn tất mua hàng trong{" "}
-          <strong className="text-primary">cùng một phiên trình duyệt</strong>.
+          Đã click vào sản phẩm là <strong className="text-primary">mua luôn sản phẩm đó</strong> — không click xem sang sản phẩm khác.
         </>
       ),
-    },
-    {
-      icon: ShieldCheck,
-      color: "text-emerald-500",
-      bg: "bg-emerald-50",
-      text: "Nên nhận đơn trống mới xác nhận để tránh mất tiền hoàn.",
     },
   ];
 
@@ -135,8 +154,8 @@ export default async function CustomerRefundsPage({
         <div className="flex items-center gap-sm mb-lg">
           <img src="/nhimqa.png" alt="" className="h-10 w-10 object-contain" />
           <div>
-            <h3 className="font-black text-[15px] text-ink">Lưu ý khi mua sắm</h3>
-            <p className="text-[12px] text-mute">Làm đúng để không mất tiền hoàn</p>
+            <h3 className="font-black text-[15px] text-ink">⚠️ Lưu ý bắt buộc trước khi mua</h3>
+            <p className="text-[12px] text-mute">Vi phạm 1 trong các mục dưới đây có thể khiến đơn <strong className="text-rose-600">mất tiền hoàn</strong></p>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
